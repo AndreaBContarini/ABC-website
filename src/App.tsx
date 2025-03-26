@@ -75,27 +75,38 @@ function App() {
                   Physicist & AI Solutions Architect<br />University of Geneva
                 </p>
                 <div className="flex flex-col items-start space-y-2 mt-2">
-                  <p className={`text-sm flex items-center ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                    <span className="mr-2">📍</span> Geneva, Switzerland
-                  </p>
-                  <p className={`text-sm flex items-center ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                    <span className="mr-2">🏢</span> Martes-AI
-                  </p>
-                  <p className={`text-sm flex items-center ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                    <span className="mr-2">✉️</span> Email
-                  </p>
-                  <p className={`text-sm flex items-center ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                  <a 
+                    href="https://www.martes-ai.com" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className={`text-sm flex items-center ${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-600'} transition-colors`}
+                  >
+                    <span className="mr-2">🏢</span> Martes AI
+                  </a>
+                  <a 
+                    href="https://x.com/andreabelli" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className={`text-sm flex items-center ${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-600'} transition-colors`}
+                  >
                     <span className="mr-2">🐦</span> Twitter
-                  </p>
-                  <p className={`text-sm flex items-center ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                  </a>
+                  <a 
+                    href="https://www.linkedin.com/in/andreabellicontarini/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className={`text-sm flex items-center ${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-600'} transition-colors`}
+                  >
                     <span className="mr-2">🔗</span> LinkedIn
-                  </p>
-                  <p className={`text-sm flex items-center ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+                  </a>
+                  <a 
+                    href="https://github.com/AndreaBContarini" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className={`text-sm flex items-center ${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-600'} transition-colors`}
+                  >
                     <span className="mr-2">🐙</span> Github
-                  </p>
-                  <p className={`text-sm flex items-center ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                    <span className="mr-2">📺</span> YouTube
-                  </p>
+                  </a>
                 </div>
               </div>
 
@@ -113,7 +124,7 @@ function App() {
                       🔬 My research interests lie in Computer Vision, AI-driven automation, and data analysis. My latest projects include Visual Tracking in Spinning Top Simulations and Machine Learning applications in Medical Imaging.
                     </p>
                     <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                      🛠️ I'm the Co-Founder & Chief AI Solutions Architect at Martes-AI, where I develop AI-driven automation tools for business processes. I have experience working with automation platforms like Make, n8n, and Voiceflow.
+                      🛠️ I'm the Co-Founder & Chief AI Solutions Architect at Martes AI, where I develop AI-driven automation tools for business processes. I have experience working with automation platforms like Make, n8n, and Voiceflow.
                     </p>
                     <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                       📊 Previously, I worked as a Data Analyst intern at SAS Institute, focusing on Customer Intelligence and CRM analytics, and as an Account Manager Assistant at Randstad.

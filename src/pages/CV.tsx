@@ -17,6 +17,9 @@ function CV() {
   // Function to scroll to top on page load
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    // Automatically open CV in new tab
+    window.open('/assets/cv.pdf', '_blank');
   }, []);
 
   // Path to CV in public folder
