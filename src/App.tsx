@@ -62,7 +62,7 @@ function App() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row items-start justify-between">
               {/* Left side - Profile */}
-              <div className="md:w-1/4 text-center mb-8 md:mb-0 flex flex-col items-center">
+              <div className="md:w-1/3 text-center mb-8 md:mb-0 flex flex-col items-center">
                 <img
                   src="https://i.ibb.co/LXzJRgsw/andrea.jpg"
                   alt="Andrea Belli Contarini"
@@ -110,8 +110,8 @@ function App() {
                 </div>
               </div>
 
-              {/* Middle - Bio */}
-              <div className="md:w-2/4 px-4">
+              {/* Right side - Bio */}
+              <div className="md:w-2/3 px-4">
                 <div className="mb-8">
                   <h1 className={`text-3xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                     👋🏼 Hey there, I'm Andrea!
@@ -135,15 +135,6 @@ function App() {
                   </div>
                 </div>
               </div>
-
-              {/* Right side - Project Image */}
-              <div className="md:w-1/4 flex justify-center">
-                <img
-                  src="https://images.unsplash.com/photo-1591453089816-0fbb971b454c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="AI Automation Concept"
-                  className="rounded-lg shadow-xl w-full max-w-xs"
-                />
-              </div>
             </div>
           </div>
         </section>
@@ -151,22 +142,31 @@ function App() {
         {/* Portfolio Selection Section */}
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className={`text-3xl font-bold text-center mb-10 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+              Discover my portfolio!
+            </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <Link to="/research-projects" className={`${isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'} rounded-lg shadow-lg p-6 transition-all duration-300`}>
-                <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                  Research & AI Projects
-                </h2>
-                <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                  Explore my machine learning, computer vision, and AI research projects.
-                </p>
+              <Link to="/research-projects" className={`group ${isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'} rounded-lg shadow-lg p-6 transition-all duration-300 relative overflow-hidden`}>
+                <div className="absolute inset-0 w-1 bg-blue-500 transform scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-in-out origin-bottom"></div>
+                <div className="relative z-10">
+                  <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'} group-hover:translate-x-2 transition-transform duration-300`}>
+                    Research & AI Projects
+                  </h2>
+                  <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'} group-hover:translate-x-2 transition-transform duration-300`}>
+                    Explore my machine learning, computer vision, and AI research projects.
+                  </p>
+                </div>
               </Link>
-              <Link to="/automation-projects" className={`${isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'} rounded-lg shadow-lg p-6 transition-all duration-300`}>
-                <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                  AI Automation Solutions
-                </h2>
-                <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                  Discover my AI automation solutions and industrial applications.
-                </p>
+              <Link to="/automation-projects" className={`group ${isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'} rounded-lg shadow-lg p-6 transition-all duration-300 relative overflow-hidden`}>
+                <div className="absolute inset-0 w-1 bg-green-500 transform scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-in-out origin-bottom"></div>
+                <div className="relative z-10">
+                  <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'} group-hover:translate-x-2 transition-transform duration-300`}>
+                    AI Automation Solutions
+                  </h2>
+                  <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'} group-hover:translate-x-2 transition-transform duration-300`}>
+                    Discover my AI automation solutions and industrial applications.
+                  </p>
+                </div>
               </Link>
             </div>
           </div>
