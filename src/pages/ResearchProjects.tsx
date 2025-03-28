@@ -215,10 +215,10 @@ We also added visual effects such as **animated life bars and wake trails** to e
               height="315" 
               src="https://www.youtube.com/embed/atZ-MPWE14Q?si=_5PzLXksdL2Q9CFD" 
               title="Beyblade Detection & Tracking Demo" 
-              frameborder="0" 
+              frameBorder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              allowfullscreen>
-            </iframe>
+              allowFullScreen
+            ></iframe>
           </div>
         );
       }
@@ -227,8 +227,8 @@ We also added visual effects such as **animated life bars and wake trails** to e
 
     // Modifica il contenuto Markdown per rimuovere la sezione HTML che mostra l'iframe
     const processedContent = project.content?.replace(
-      /<div class="relative pb-\[56\.25%\].*?<\/div>/s,
-      '{{VIDEO_PLACEHOLDER}}'
+      /{{VIDEO_PLACEHOLDER}}/g,
+      '🎬 **[Click here to view the demo video](#video)**'
     );
 
     return (
@@ -261,13 +261,39 @@ We also added visual effects such as **animated life bars and wake trails** to e
                   h3: ({node, ...props}) => <h3 className={`text-xl font-bold mt-6 mb-3 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} {...props} />,
                   h4: ({node, ...props}) => <h4 className={`text-lg font-bold mt-5 mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} {...props} />,
                   p: ({node, ...props}) => {
-                    // Sostituisci il placeholder con l'iframe
-                    if (props.children && props.children[0] === '{{VIDEO_PLACEHOLDER}}') {
-                      return renderHtmlVideo();
+                    // Controlla se ci sono figli e se il primo è una stringa
+                    const firstChild = Array.isArray(props.children) && props.children.length > 0 
+                      ? props.children[0] 
+                      : null;
+                      
+                    // Se il testo contiene il link al video, aggiungiamo uno stile speciale
+                    if (typeof firstChild === 'string' && firstChild.includes('[Click here to view the demo video]')) {
+                      return (
+                        <p className={`mb-4 ${isDarkMode ? 'text-green-300' : 'text-green-600'} text-center text-xl font-bold animate-pulse`} {...props} />
+                      );
                     }
+                    
                     return <p className={`mb-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`} {...props} />;
                   },
-                  a: ({node, ...props}) => <a className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer" {...props} />,
+                  a: ({node, ...props}) => {
+                    // Se è il link al video, creiamo un'ancora per lo scroll
+                    if (props.href === '#video') {
+                      return (
+                        <a 
+                          className={`inline-block px-6 py-3 rounded-lg ${isDarkMode ? 'bg-blue-700 hover:bg-blue-600' : 'bg-blue-500 hover:bg-blue-400'} text-white font-bold transition-colors duration-300`}
+                          onClick={(e) => {
+                            e.preventDefault();
+                            const videoElement = document.getElementById('demo-video');
+                            if (videoElement) {
+                              videoElement.scrollIntoView({ behavior: 'smooth' });
+                            }
+                          }}
+                          {...props}
+                        />
+                      );
+                    }
+                    return <a className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer" {...props} />;
+                  },
                   ul: ({node, ...props}) => <ul className="list-disc pl-6 mb-4" {...props} />,
                   ol: ({node, ...props}) => <ol className="list-decimal pl-6 mb-4" {...props} />,
                   li: ({node, ...props}) => <li className="mb-1" {...props} />,
@@ -294,13 +320,24 @@ We also added visual effects such as **animated life bars and wake trails** to e
                 {processedContent}
               </ReactMarkdown>
               
-              {/* Aggiungiamo il video dopo la sezione Results */}
-              {selectedProject?.id === 1 && !processedContent?.includes('{{VIDEO_PLACEHOLDER}}') && (
-                <div className="my-8">
-                  <h3 className={`text-xl font-bold mt-6 mb-3 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-                    Demo Video
+              {/* Video demo con ancoraggio */}
+              {selectedProject?.id === 1 && (
+                <div id="demo-video" className="my-8 pt-4 border-t border-gray-300 dark:border-gray-700">
+                  <h3 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                    🎬 Demo Video: Beyblade Detection & Tracking
                   </h3>
-                  {renderHtmlVideo()}
+                  <div className="relative pb-[56.25%] h-0 overflow-hidden max-w-full my-8 rounded-lg shadow-xl">
+                    <iframe 
+                      className="absolute top-0 left-0 w-full h-full" 
+                      width="560" 
+                      height="315" 
+                      src="https://www.youtube.com/embed/atZ-MPWE14Q?si=_5PzLXksdL2Q9CFD" 
+                      title="Beyblade Detection & Tracking Demo" 
+                      frameBorder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                      allowFullScreen
+                    ></iframe>
+                  </div>
                 </div>
               )}
             </div>
