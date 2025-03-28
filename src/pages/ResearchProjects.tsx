@@ -212,6 +212,137 @@ Predicted masks visually align well with medical annotations, confirming good ge
 - 📦 Dataset link (original): \`http://giagu.web.cern.ch/giagu/CERN/ct_lesion_seg.zip\`
 `;
 
+  // Markdown content for the NMR ML article
+  const nmrMLArticleContent = `# 🧠 Machine Learning Applications in NMR Imaging
+
+## Overview
+
+This project explores how **Machine Learning** can be used in **Magnetic Resonance Imaging (MRI)** to differentiate between **healthy** and **osteoporotic** patients, starting from NMR images of the heel bone (calcaneus).
+
+We developed a model that compresses multiple MRI slices into a **latent space**, used to train a classifier. Although the results are preliminary, this pipeline lays the groundwork for AI-supported diagnostics.
+
+![Project Workflow Overview](/assets/workflow_NMR.png)
+
+🔗 GitHub repository: [AndreaBContarini/ML-in-NMR](https://github.com/AndreaBContarini/ML-in-NMR)
+
+---
+
+## 🧪 Physics Behind MRI
+
+MRI imaging is based on the interaction between external magnetic fields and nuclear spin. After applying RF pulses, the system produces a **Free Induction Decay** signal, processed through Fourier transforms to generate spatially-resolved images.
+
+Two key time parameters are:
+
+- **T1 (longitudinal relaxation)** – measured via TR (repetition time)
+- **T2 (transversal relaxation)** – measured via TE (echo time)
+
+---
+
+## 🎯 Objective
+
+To reduce multi-temporal MRI scans into a lower-dimensional **latent space**, which can be used by a classifier to predict patient condition.
+
+- ✅ Input: T1 and T2-weighted MRI slices
+- ✅ Output: Binary classification — \`Healthy\` or \`Osteoporotic\`
+
+---
+
+## 🗂️ Dataset
+
+- **Source**: Santa Lucia Hospital, Rome
+- **Patients**: 33 total
+  - Healthy: 12
+  - Osteoporotic: 21
+- **Data Format**: \`.nii\` files converted to \`.npy\`
+- **Slices**:
+  - T1 images at 10 TR values (e.g., 280 to 2000 ms)
+  - T2 images at 9 TE values (e.g., 25 to 225 ms)
+- **Image size**: 512×512 pixels
+
+---
+
+## 🛠️ Preprocessing
+
+- **Normalization**: T2 slices normalized by their first echo (TE = 25 ms)
+- **Slicing**: Center slices selected for analysis
+- **Tensor shape**:
+  - T1: (1, 10, 512, 512)
+  - T2: (6, 8, 512, 512) — after removing first slice post-normalization
+
+---
+
+## 🧠 Model Architecture
+
+The **MRI_Classifier**:
+
+1. Applies log transformation to T1 and T2
+2. Uses **Conv3D + MaxPooling + AveragePooling**
+3. Extracts features per slice
+4. **Concatenates** and flattens the tensors
+5. Projects into a **latent space**
+6. Performs **binary classification** via sigmoid + BCE loss
+
+![Model Architecture Implementation](/assets/flowchart_code.png)
+
+> ⚖️ Class imbalance handled with \`pos_weight\` (≈0.57) in loss function.
+
+---
+
+## 🔁 Jackknife Cross-Validation
+
+- Leave-one-out strategy:
+  - Train on all patients except one
+  - Validate on the excluded patient
+  - Repeat for each patient
+- Useful when working with **small datasets**
+
+---
+
+## 📉 Results
+
+- **AUC**: 0.42 (worse than random baseline)
+- **Confusion matrix**: Confirms poor performance
+- **Latent space visualization**:
+  - **ICA** and **PCA** show 2 rough clusters
+  - **t-SNE** and **UMAP** reveal similar structure
+- Poor classifier performance likely due to:
+  - Dataset imbalance
+  - Small sample size
+
+![Confusion Matrix](/assets/confusion_martix_NMR.png)
+
+![PCA Results](/assets/PCA_NMR.png)
+
+---
+
+## 📊 Latent Space Analysis
+
+After retraining on the full dataset, we extracted features from the **flatten layer** and applied:
+
+- **Independent Component Analysis (ICA)**
+- **Principal Component Analysis (PCA)**
+- **t-SNE / UMAP** for non-linear projections
+
+Clustering shows some promise, but data limitations remain a bottleneck.
+
+---
+
+## 🚀 Future Directions
+
+- 🔄 **Balance and expand** the dataset
+- 🧪 Use **cGANs** to generate synthetic MRI scans
+- 🔍 Perform **ablation studies** to understand the most informative slices
+- 📈 Extend classification to **osteopenic** cases (more granular output)
+- 🔧 Improve model depth and feature extraction
+
+---
+
+## 🔗 Resources
+
+- 👨‍💻 GitHub: [AndreaBContarini/ML-in-NMR](https://github.com/AndreaBContarini/ML-in-NMR)
+- 📊 MRI dataset (provided by Santa Lucia Hospital, not publicly released)
+`;
+
   const researchProjects: ResearchProject[] = [
     {
       id: 1,
@@ -230,6 +361,15 @@ Predicted masks visually align well with medical annotations, confirming good ge
       imageUrl: '/assets/lung_covid.png',
       date: 'March 2023',
       content: lungCTArticleContent
+    },
+    {
+      id: 3,
+      title: 'Machine Learning Applications in NMR Imaging',
+      description: 'Developing ML models to analyze MRI scans of the heel bone for osteoporosis diagnosis, with a focus on dimensionality reduction and latent space clustering.',
+      technologies: ['Machine Learning', 'MRI', 'PyTorch', 'Dimensionality Reduction', 'Medical Imaging'],
+      imageUrl: '/assets/ML_NMR.png',
+      date: 'February 2023',
+      content: nmrMLArticleContent
     }
   ];
 

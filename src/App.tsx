@@ -85,23 +85,23 @@ function App() {
                   </a>
                   <a 
                     href="https://x.com/andreabelli" 
-                    target="_blank" 
+                    target="_blank"
                     rel="noopener noreferrer"
                     className={`text-sm flex items-center ${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-600'} transition-colors`}
                   >
                     <span className="mr-2">🐦</span> Twitter
                   </a>
-                  <a 
-                    href="https://www.linkedin.com/in/andreabellicontarini/" 
-                    target="_blank" 
+                  <a
+                    href="https://www.linkedin.com/in/andreabellicontarini/"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className={`text-sm flex items-center ${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-600'} transition-colors`}
                   >
                     <span className="mr-2">🔗</span> LinkedIn
                   </a>
-                  <a 
+                  <a
                     href="https://github.com/AndreaBContarini" 
-                    target="_blank" 
+                    target="_blank"
                     rel="noopener noreferrer"
                     className={`text-sm flex items-center ${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-600'} transition-colors`}
                   >
@@ -157,8 +157,8 @@ function App() {
                     />
                   </div>
                   <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'} group-hover:translate-x-2 transition-transform duration-300`}>
-                    Research & AI Projects
-                  </h2>
+                  Research & AI Projects
+                </h2>
                   <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'} group-hover:translate-x-2 transition-transform duration-300`}>
                     Explore my machine learning, computer vision, and AI research projects.
                   </p>
@@ -175,11 +175,11 @@ function App() {
                     />
                   </div>
                   <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'} group-hover:translate-x-2 transition-transform duration-300`}>
-                    AI Automation Solutions
-                  </h2>
+                  AI Automation Solutions
+                </h2>
                   <p className={`${isDarkMode ? 'text-gray-300' : 'text-gray-600'} group-hover:translate-x-2 transition-transform duration-300`}>
                     Discover my AI automation solutions and industrial applications.
-                  </p>
+                </p>
                 </div>
               </Link>
             </div>
