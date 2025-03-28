@@ -209,7 +209,6 @@ Predicted masks visually align well with medical annotations, confirming good ge
 ## 🔗 Resources
 
 - 🧬 GitHub Repository: [AndreaBContarini/ML-Lungs_Segmentation](https://github.com/AndreaBContarini/ML-Lungs_Segmentation)
-- 📦 Dataset link (original): \`http://giagu.web.cern.ch/giagu/CERN/ct_lesion_seg.zip\`
 `;
 
   // Markdown content for the NMR ML article
@@ -436,7 +435,7 @@ Features were normalized and invalid entries replaced with -1.
       description: 'Real-time system to detect, track, and analyze spinning Beyblade tops including collision detection using deep learning and tracking algorithms.',
       technologies: ['Computer Vision', 'YOLOv8', 'OpenCV', 'Kalman Filter', 'Object Tracking'],
       imageUrl: '/assets/cover_beyblade.png',
-      date: 'May 2023',
+      date: 'January 2025',
       content: beybladeArticleContent
     },
     {
@@ -445,7 +444,7 @@ Features were normalized and invalid entries replaced with -1.
       description: 'Deep learning framework for automatic segmentation of lung tissues in CT scan slices, helping to distinguish between normal and pathological tissues in COVID-19 patients.',
       technologies: ['Deep Learning', 'Medical Imaging', 'PyTorch', 'U-Net', 'Image Segmentation'],
       imageUrl: '/assets/lung_covid.png',
-      date: 'March 2023',
+      date: 'September 2022',
       content: lungCTArticleContent
     },
     {
@@ -454,7 +453,7 @@ Features were normalized and invalid entries replaced with -1.
       description: 'Developing ML models to analyze MRI scans of the heel bone for osteoporosis diagnosis, with a focus on dimensionality reduction and latent space clustering.',
       technologies: ['Machine Learning', 'MRI', 'PyTorch', 'Dimensionality Reduction', 'Medical Imaging'],
       imageUrl: '/assets/ML_NMR.png',
-      date: 'February 2023',
+      date: 'July 2024',
       content: nmrMLArticleContent
     },
     {
@@ -481,7 +480,9 @@ Features were normalized and invalid entries replaced with -1.
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {researchProjects.map((project) => (
+        {researchProjects
+          .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+          .map((project) => (
           <article 
             key={project.id}
             className={`${isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'} rounded-lg shadow-lg overflow-hidden transition-all duration-300 ${project.content ? 'cursor-pointer' : ''}`}
@@ -582,9 +583,6 @@ Features were normalized and invalid entries replaced with -1.
             </svg>
             Back to Projects
           </button>
-          <h1 className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-            {project.title}
-          </h1>
         </div>
 
         <article className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg shadow-lg p-8 mb-10`}>

@@ -14,6 +14,7 @@ function CV() {
     setIsDarkMode(!isDarkMode);
   };
 
+
   // Function to scroll to top on page load
   useEffect(() => {
     window.scrollTo(0, 0);

@@ -12,6 +12,7 @@ interface Article {
   thumbnail: string;
   content: string;
   technologies: string[];
+  slug: string;
 }
 
 function AutomationProjects() {
@@ -118,6 +119,82 @@ Integrating artificial intelligence in healthcare offers significant benefits in
 Thanks to Martes AI, the Santa Lucia Eye Clinic in Cosenza has transformed the management of communications and appointments, improving operational efficiency and patient experience. The strategic use of artificial intelligence and automation proves to be a winning solution for healthcare institutions aiming to innovate while maintaining high standards of care.
 `;
 
+  // Markdown content for the WhatsApp agent article
+  const whatsappAgentArticle = `# ✈️ AI WhatsApp Agent for Travel Agencies
+
+## 💰 +€27,500 in Monthly Revenue with an AI Chatbot
+
+### The Power of AI Automation
+
+The adoption of our AI-driven technologies brought a major impact to one of our client travel agencies. By leveraging automation — which we'll break down below — the agency recorded an **increase in monthly revenue of approximately €27,500**, by optimizing its client database and delivering personalized, targeted travel offers.
+
+---
+
+## 📲 Phase 1: Reaching 3,000 Contacts via WhatsApp
+
+The project began by reaching out to 3,000 users, including former customers and existing contacts stored in the agency's Google Contacts. The objective was to **re-engage** them by showcasing new travel opportunities and converting conversations into either direct bookings or qualified leads.
+
+### 1. Smart WhatsApp Chatbot Setup
+
+We built and trained an AI-powered chatbot with the following abilities:
+
+- Automatically send promotional posters and messages to all contacts  
+- Instantly reply to common inquiries in real-time  
+- Manage user preferences like opt-outs or hand-offs to a human agent  
+
+### 2. Promotional Campaigns with Dynamic User Interaction
+
+The chatbot sent various travel posters offering multiple destinations for different seasons and travel periods — such as this example:
+
+![Kenya Travel Cover](https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=328,h=409,fit=crop/mk39w0PZ1DIe7Dp6/kenya-ALpo4xMbXwSnMXBq.jpg)
+
+---
+
+### 🧾 Results from Phase 1
+
+- **4%** of contacted users became **qualified leads**, purchasing travel packages  
+- **12%** of users started a conversation with the chatbot  
+
+---
+
+## 🤖 Phase 2: Smarter Chatbot & Hyper-Personalized Offers
+
+After the initial success, we enhanced the chatbot's capabilities, making it more intelligent and adaptive to user needs. This next step was crucial for improving efficiency and personalizing offers at scale.
+
+### 1. LLM Integration for Natural Conversations
+
+We integrated **Large Language Models (LLMs)** like ChatGPT into the system, improving its ability to:
+
+- Understand complex queries  
+- Respond naturally and accurately  
+- Adapt based on context using custom-engineered prompts  
+
+### 2. Personalized Destination Recommendations
+
+The chatbot evolved into a real virtual travel assistant, able to:
+
+- Recommend destinations based on **country, season, budget**, or **family needs**  
+- Suggest travel packages aligned with user interests (beach, mountains, city escapes)  
+
+### 3. Automated Data Collection & Lead Management
+
+All user interactions are:
+
+- **Automatically logged**  
+- **Sent to the agency's team** via email or internal messaging  
+- **Stored in a central Google Sheet** for seamless lead tracking and customer hand-off  
+
+This streamlined flow allows agents to **directly follow up with interested users** and close deals, ensuring a smooth transition from AI to human support.
+
+---
+
+## 📈 Final Impact
+
+In October 2024 alone, the AI system helped generate **€82,170** in sales. Here's a snapshot of some contracts closed:
+
+![Contract Screenshot](https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=861,h=549,fit=crop/mk39w0PZ1DIe7Dp6/whatsapp-image-2024-11-01-at-23.22.10-A3Qw77Ok5PfMMzGy.jpeg)
+`;
+
   // Sample articles list
   const articles = [
     {
@@ -125,16 +202,31 @@ Thanks to Martes AI, the Santa Lucia Eye Clinic in Cosenza has transformed the m
       title: 'AI Automation for Santa Lucia Eye Clinic',
       summary: 'How Martes AI implemented an integrated system for email classification and appointment booking at a leading eye clinic in Cosenza.',
       date: 'March 20, 2025',
-      thumbnail: 'https://i.ibb.co/0yvHGXZK/scenario-clinica.png',
+      thumbnail: '/assets/Clinica_Sta_Lucia.png',
       content: santaLuciaArticle,
-      technologies: ['AI Classification', 'Email Automation', 'Voiceflow', 'Make', 'API Intergation']
+      technologies: ['AI Classification', 'Email Automation', 'Voiceflow', 'Make', 'API Integration'],
+      slug: 'santa-lucia-eye-clinic'
+    },
+    {
+      id: 2,
+      title: 'AI WhatsApp Agent for Travel Agencies',
+      summary: 'How an AI chatbot on WhatsApp generated an additional €27,500 in monthly revenue by delivering personalized travel offers.',
+      date: 'February 12, 2025',
+      thumbnail: '/assets/bluvacanze.png',
+      content: whatsappAgentArticle,
+      technologies: ['WhatsApp Business API', 'AI Chatbot', 'LLM Integration', 'Google Sheets', 'Travel Tech'],
+      slug: 'whatsapp-agent-travel-agency'
     }
   ];
 
   // Pagination logic
   const indexOfLastArticle = currentPage * articlesPerPage;
   const indexOfFirstArticle = indexOfLastArticle - articlesPerPage;
-  const currentArticles = articles.slice(indexOfFirstArticle, indexOfLastArticle);
+  
+  // Ordina gli articoli dal più recente al più vecchio
+  const sortedArticles = [...articles].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  
+  const currentArticles = sortedArticles.slice(indexOfFirstArticle, indexOfLastArticle);
   const totalPages = Math.ceil(articles.length / articlesPerPage);
 
   // Handle pagination
@@ -158,6 +250,7 @@ Thanks to Martes AI, the Santa Lucia Eye Clinic in Cosenza has transformed the m
             key={article.id}
             className={`${isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'} rounded-lg shadow-lg overflow-hidden transition-all duration-300 cursor-pointer`}
             onClick={() => setSelectedArticle(article)}
+            id={article.slug}
           >
             <div className="h-60 overflow-hidden">
               <img 
@@ -250,12 +343,9 @@ Thanks to Martes AI, the Santa Lucia Eye Clinic in Cosenza has transformed the m
           </svg>
           Back to Articles
         </button>
-        <h1 className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-          {article.title}
-        </h1>
       </div>
 
-      <article className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg shadow-lg p-8 mb-10`}>
+      <article className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg shadow-lg p-8 mb-10`} id={article.slug}>
         <div className="prose max-w-none prose-lg mx-auto">
           <div className={`${isDarkMode ? 'prose-invert' : ''}`}>
             <ReactMarkdown
