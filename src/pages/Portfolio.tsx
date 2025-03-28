@@ -39,7 +39,7 @@ function Portfolio() {
             <Link to="/research-projects" className={`${isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'} rounded-lg shadow-lg p-8 transition-all duration-300`}>
               <div className="h-40 mb-6 overflow-hidden rounded-lg">
                 <img 
-                  src="https://images.unsplash.com/photo-1501139083538-0139583c060f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  src="/assets/research.png" 
                   alt="Research & AI Projects" 
                   className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
                 />
@@ -61,7 +61,7 @@ function Portfolio() {
             <Link to="/automation-projects" className={`${isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'} rounded-lg shadow-lg p-8 transition-all duration-300`}>
               <div className="h-40 mb-6 overflow-hidden rounded-lg">
                 <img 
-                  src="https://images.unsplash.com/photo-1661956602139-ec64991b8b16?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  src="/assets/automation.png" 
                   alt="AI Automation Solutions" 
                   className="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-300"
                 />
