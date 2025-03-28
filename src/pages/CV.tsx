@@ -23,7 +23,7 @@ function CV() {
   }, []);
 
   // Path to CV in public folder
-  const cvPath = '/assets/cv.pdf';
+  const cvPath = '/assets/Resume_ABC.pdf';
 
   return (
     <div className={`min-h-screen ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}>
