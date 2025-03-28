@@ -124,7 +124,7 @@ function App() {
                       🔬 My research interests lie in Computer Vision, AI-driven automation, and data analysis. My latest projects include Visual Tracking in Spinning Top Simulations and Machine Learning applications in Medical Imaging.
                     </p>
                     <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                      🛠️ I'm the Co-Founder & Chief AI Solutions Architect at <a href="https://www.martes-ai.com" target="_blank" rel="noopener noreferrer" className={`${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'} transition-colors`}>Martes AI</a>, dove sviluppo strumenti di automazione basati su AI per processi aziendali. Ho esperienza con piattaforme di automazione come Make, n8n e Voiceflow.
+                      🛠️ I'm the Co-Founder & Chief AI Solutions Architect at <a href="https://www.martes-ai.com" target="_blank" rel="noopener noreferrer" className={`${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'} transition-colors`}>Martes AI</a>, where I develop AI-powered automation tools for business processes. I have experience with automation platforms such as Make, n8n, and Voiceflow.
                     </p>
                     <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                       📊 Previously, I worked as a Data Analyst intern at SAS Institute, focusing on Customer Intelligence and CRM analytics, and as an Account Manager Assistant at Randstad.
