@@ -4,9 +4,19 @@ import remarkGfm from 'remark-gfm';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
+interface Article {
+  id: number;
+  title: string;
+  summary: string;
+  date: string;
+  thumbnail: string;
+  content: string;
+  technologies: string[];
+}
+
 function AutomationProjects() {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [selectedArticle, setSelectedArticle] = useState(null);
+  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const articlesPerPage = 4;
 
@@ -164,7 +174,7 @@ Thanks to Martes AI, the Santa Lucia Eye Clinic in Cosenza has transformed the m
   const totalPages = Math.ceil(articles.length / articlesPerPage);
 
   // Handle pagination
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
 
   // Render article list
   const renderArticleList = () => (
@@ -262,7 +272,7 @@ Thanks to Martes AI, the Santa Lucia Eye Clinic in Cosenza has transformed the m
   );
 
   // Render single article
-  const renderArticle = (article) => (
+  const renderArticle = (article: Article) => (
     <>
       <div className="mb-6 flex items-center">
         <button
