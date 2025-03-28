@@ -309,12 +309,8 @@ The **MRI_Classifier**:
   - Dataset imbalance
   - Small sample size
 
-![Confusion Matrix](/assets/confusion_martix_NMR.png)
 
-![PCA Results](/assets/PCA_NMR.png)
-
----
-
+  
 ## 📊 Latent Space Analysis
 
 After retraining on the full dataset, we extracted features from the **flatten layer** and applied:
@@ -341,6 +337,96 @@ Clustering shows some promise, but data limitations remain a bottleneck.
 
 - 👨‍💻 GitHub: [AndreaBContarini/ML-in-NMR](https://github.com/AndreaBContarini/ML-in-NMR)
 - 📊 MRI dataset (provided by Santa Lucia Hospital, not publicly released)
+`;
+
+  // Markdown content for the Jet Flavor Tagging article
+  const jetFlavorArticleContent = `# 💥 Jet Flavor Tagging with Deep Neural Networks
+
+## Overview
+
+In this project, we explore the use of **Deep Neural Networks (DNNs)** to classify the **flavor of hadronic jets** produced in high-energy proton-proton collisions at the LHC. Specifically, the goal is to distinguish **bottom-quark jets** from those originated by **light and charm quarks** using features derived from simulated data.
+
+🔗 GitHub Repository: [AndreaBContarini/DNNs-JetJetFlavorTagging](https://github.com/AndreaBContarini/DNNs-JetJetFlavorTagging)
+
+---
+
+## 🔬 The Physics
+
+- A **jet** is a collimated spray of particles produced from a quark or gluon.
+- In particular, identifying **b-jets** (jets originating from bottom quarks) is crucial in many new physics searches.
+- Bottom quarks have a relatively long lifetime and high mass, creating distinctive signatures (like secondary vertices and large impact parameters).
+
+---
+
+## 🧠 Neural Network Models
+
+We trained two architectures:
+
+- **Feed-Forward Neural Network (FFNN)** with 9 hidden layers and ReLU activation
+- **Long Short-Term Memory (LSTM)** network to handle sequences of features
+
+Both models perform **binary classification** (b-quark vs non-b-quark).
+
+---
+
+## 📊 Dataset & Features
+
+- **Source**: Simulated dataset ([link](http://mlphysics.ics.uci.edu/data/hb_jet_flavor_2016/))
+- **Size**: 11 million samples
+- **Input**: 16 handcrafted features including:
+  - Jet transverse momentum and pseudorapidity
+  - Track-level and vertex-level observables
+  - Impact parameter significances, jet widths, vertex energy fraction
+
+Features were normalized and invalid entries replaced with -1.
+
+---
+
+## 🧪 Training Strategy
+
+- Framework: **PyTorch on Google Colab**
+- Optimizer: **SGD with momentum**, scheduled learning rate
+- Loss: **Cross-Entropy**
+- Metric: **AUC (Area Under ROC Curve)**
+- Checkpointing: automatic save of best models and training logs
+
+---
+
+## ⚙️ Hyperparameter Optimization
+
+| Model  | Best AUC | Notable Parameters            |
+|--------|----------|-------------------------------|
+| FFNN   | 0.924    | Layers: 4096→2048→1024→...    |
+| LSTM   | 0.924    | hidden_dim=14, 3-layer MLP    |
+
+![Grid Search and Hyperparameter Optimization Results](/assets/hyperparameters_LHC.png)
+
+---
+
+## 📈 Results
+
+- Both FFNN and LSTM reached an **AUC of 0.924**, matching state-of-the-art performance
+- Slight class imbalance was observed (label 0 performed better than label 1)
+- Confusion matrices and ROC curves validated robustness
+- Good generalization with no evident overfitting
+
+![ROC Curves for Different Model Configurations](/assets/ROC_LHC.png)
+
+---
+
+## 🔮 Future Directions
+
+- Apply **class-balanced loss** or oversampling
+- Investigate **AutoEncoder-based anomaly detection** for unsupervised tagging
+- Extend training to real LHC Run 3 data
+- Explore transformer-based architectures
+
+---
+
+## 🔗 Resources
+
+- 🧠 GitHub: [DNNs-JetJetFlavorTagging](https://github.com/AndreaBContarini/DNNs-JetJetFlavorTagging)
+- 📊 Dataset: [UCI ML Physics Dataset](http://mlphysics.ics.uci.edu/data/hb_jet_flavor_2016/)
 `;
 
   const researchProjects: ResearchProject[] = [
@@ -370,6 +456,15 @@ Clustering shows some promise, but data limitations remain a bottleneck.
       imageUrl: '/assets/ML_NMR.png',
       date: 'February 2023',
       content: nmrMLArticleContent
+    },
+    {
+      id: 4,
+      title: 'Jet Flavor Tagging with Deep Neural Networks',
+      description: 'Using Deep Neural Networks to classify the flavor of hadronic jets in high-energy physics, with focus on bottom-quark identification for LHC experiments.',
+      technologies: ['Deep Learning', 'PyTorch', 'High Energy Physics', 'LSTM', 'Classification'],
+      imageUrl: '/assets/LHC_ML.png',
+      date: 'January 2023',
+      content: jetFlavorArticleContent
     }
   ];
 
@@ -517,6 +612,15 @@ Clustering shows some promise, but data limitations remain a bottleneck.
                     
                     return <p className={`mb-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`} {...props} />;
                   },
+                  div: ({node, ...props}) => {
+                    // Controlliamo se questo div è il contenitore per la griglia di immagini
+                    if (node?.properties?.className && 
+                        typeof node.properties.className === 'string' && 
+                        node.properties.className.includes('image-grid')) {
+                      return <div className="flex flex-wrap justify-around items-start my-6" {...props} />;
+                    }
+                    return <div {...props} />;
+                  },
                   a: ({node, ...props}) => {
                     // Se è il link al video, creiamo un'ancora per lo scroll
                     if (props.href === '#video') {
@@ -539,12 +643,29 @@ Clustering shows some promise, but data limitations remain a bottleneck.
                   ul: ({node, ...props}) => <ul className="list-disc pl-6 mb-4" {...props} />,
                   ol: ({node, ...props}) => <ol className="list-decimal pl-6 mb-4" {...props} />,
                   li: ({node, ...props}) => <li className="mb-1" {...props} />,
-                  img: ({node, ...props}) => (
-                    <div className="my-6">
-                      <img className="mx-auto rounded-lg shadow-lg max-w-full" {...props} />
-                      {props.alt && <p className="text-center text-sm italic mt-2">{props.alt}</p>}
-                    </div>
-                  ),
+                  img: ({node, ...props}) => {
+                    // Gestione speciale per le immagini che vogliamo mostrare affiancate
+                    const isConfusionMatrix = props.src?.includes('confusion_martix_NMR.png');
+                    const isPCA = props.src?.includes('PCA_NMR.png');
+                    
+                    // Se l'immagine è parte di un gruppo che deve stare affiancato
+                    if (isConfusionMatrix || isPCA) {
+                      return (
+                        <div className="inline-block w-1/2 px-2 my-2">
+                          <img className="mx-auto rounded-lg shadow-lg max-w-full max-h-80" {...props} />
+                          {props.alt && <p className="text-center text-sm italic mt-2">{props.alt}</p>}
+                        </div>
+                      );
+                    }
+                    
+                    // Per tutte le altre immagini, riduciamo la dimensione ma manteniamo il layout verticale
+                    return (
+                      <div className="my-4">
+                        <img className="mx-auto rounded-lg shadow-lg max-w-full max-h-96" {...props} />
+                        {props.alt && <p className="text-center text-sm italic mt-2">{props.alt}</p>}
+                      </div>
+                    );
+                  },
                   strong: ({node, ...props}) => <strong className="font-bold" {...props} />,
                   em: ({node, ...props}) => <em className="italic" {...props} />,
                   blockquote: ({node, ...props}) => (
