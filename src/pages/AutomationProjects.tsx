@@ -128,42 +128,6 @@ Thanks to Martes AI, the Santa Lucia Eye Clinic in Cosenza has transformed the m
       thumbnail: 'https://i.ibb.co/0yvHGXZK/scenario-clinica.png',
       content: santaLuciaArticle,
       technologies: ['AI Classification', 'Email Automation', 'Voiceflow', 'Make']
-    },
-    {
-      id: 2,
-      title: 'Business Process Automation Suite',
-      summary: 'End-to-end automation solution for streamlining business workflows using modern AI tools and integration with CRM systems.',
-      date: 'April 15, 2024',
-      thumbnail: 'https://images.unsplash.com/photo-1661956602139-ec64991b8b16?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      content: '# Coming soon',
-      technologies: ['n8n', 'Make', 'Voiceflow', 'API Integration']
-    },
-    {
-      id: 3,
-      title: 'Document Processing Pipeline',
-      summary: 'Automated system for processing and analyzing business documents using OCR and NLP techniques for data extraction.',
-      date: 'February 28, 2024',
-      thumbnail: 'https://images.unsplash.com/photo-1618044733300-9472054094ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      content: '# Coming soon',
-      technologies: ['OCR', 'NLP', 'Workflow Automation', 'Data Extraction']
-    },
-    {
-      id: 4,
-      title: 'Customer Support Automation',
-      summary: 'AI-powered customer support system that uses natural language processing to understand and respond to customer inquiries.',
-      date: 'December 10, 2023',
-      thumbnail: 'https://images.unsplash.com/photo-1596524430615-b46475ddff6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      content: '# Coming soon',
-      technologies: ['ChatGPT API', 'Dialogflow', 'Node.js', 'Customer Support']
-    },
-    {
-      id: 5,
-      title: 'Marketing Analytics Dashboard',
-      summary: 'Custom analytics dashboard that aggregates marketing data from multiple sources and provides AI-driven insights.',
-      date: 'October 5, 2023',
-      thumbnail: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      content: '# Coming soon',
-      technologies: ['Data Visualization', 'AI Analytics', 'Marketing Automation', 'Dashboard Design']
     }
   ];
 

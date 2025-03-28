@@ -119,6 +119,99 @@ We also added visual effects such as **animated life bars and wake trails** to e
   - [Golf Ball Detection with Kalman Filter](https://arxiv.org/pdf/2012.09393)
 `;
 
+  // Markdown content for the Lung CT Scan article
+  const lungCTArticleContent = `# 🫁 Lung CT Scan Segmentation with Deep Learning
+
+## Overview
+
+This project focuses on building a **2D segmentation algorithm** for lung CT scans of patients affected by **COVID-19**, with the goal of distinguishing between different types of lung tissues.
+
+The deep learning model is trained and evaluated using real annotated medical data, achieving a **mean Intersection over Union (IoU) of 76%**, showing promising performance in identifying pathological tissue.
+
+Code repository: [GitHub - ML-Lungs_Segmentation](https://github.com/AndreaBContarini/ML-Lungs_Segmentation)
+
+---
+
+## 🩻 The Problem
+
+Due to the limitations of RT-PCR testing during the pandemic, medical imaging such as CT scans emerged as a critical diagnostic tool. Radiological imaging, combined with AI-based image analysis, provides a fast and sensitive approach to detecting COVID-related lung conditions.
+
+This project presents a deep learning framework for **automatic segmentation** of lung tissues in CT scan slices, helping to distinguish between:
+
+- 🫁 Normal lung (label \`1\`)
+- 🩶 Ground-glass opacity (label \`2\`)
+- 🟥 Consolidation (label \`3\`)
+- ⬛ Non-lung/background (label \`0\`)
+
+---
+
+## 🗂️ Dataset
+
+- **Source**: Chinese dataset 2019nCoVR
+- **Samples**: 750 CT slices (512×512 pixels) with pixel-level medical annotations
+- **Labels**: Each pixel classified as background, normal lung, glass opacity, or consolidation
+
+> 📌 Data was augmented to reach **3000 images** through rotations and flips, then split into train (80%), validation (10%), and test (10%).
+
+---
+
+## 🧠 Model Architecture – U-Net
+
+We implemented a **U-Net architecture**, widely used for biomedical image segmentation, featuring:
+
+- **Encoder-Decoder** structure
+- **Skip connections** for preserving spatial details
+- **Loss function**: CrossEntropy with PyTorch built-in weight handling
+- **Optimizer**: Adam (\`lr = 1e-3\`)
+- **Batch size**: 5
+- **Epochs**: 35 (~100 minutes training time)
+
+![U-Net Architecture Revisited](/assets/u_net_rivisited.png)
+
+---
+
+## 📉 Training & Performance
+
+Training monitored via:
+
+- **Loss metrics**: convergence after ~30 epochs
+- **IoU**: calculated over all classes
+- **Test performance**:
+  - **Mean IoU**: \`76%\`
+  - **Test loss**: \`19%\`
+
+> 🔍 Qualitative analysis also confirms strong similarity between predicted and ground-truth masks.
+
+---
+
+## 🧪 Example Results
+
+From left to right:
+1. Original CT image
+2. Ground truth segmentation
+3. Predicted segmentation
+
+Predicted masks visually align well with medical annotations, confirming good generalization by the network.
+
+![Lung Segmentation Examples](/assets/examples_lungs.png)
+
+---
+
+## 🚀 Future Improvements
+
+- Increase **number of epochs**
+- Deepen U-Net architecture with more convolutional layers
+- Address hardware limits (RAM/GPU) to allow longer training
+- Consider using **Colab Pro** or cloud computing for scalability
+
+---
+
+## 🔗 Resources
+
+- 🧬 GitHub Repository: [AndreaBContarini/ML-Lungs_Segmentation](https://github.com/AndreaBContarini/ML-Lungs_Segmentation)
+- 📦 Dataset link (original): \`http://giagu.web.cern.ch/giagu/CERN/ct_lesion_seg.zip\`
+`;
+
   const researchProjects: ResearchProject[] = [
     {
       id: 1,
@@ -128,6 +221,15 @@ We also added visual effects such as **animated life bars and wake trails** to e
       imageUrl: '/assets/cover_beyblade.png',
       date: 'May 2023',
       content: beybladeArticleContent
+    },
+    {
+      id: 2,
+      title: 'Lung CT Scan Segmentation with Deep Learning',
+      description: 'Deep learning framework for automatic segmentation of lung tissues in CT scan slices, helping to distinguish between normal and pathological tissues in COVID-19 patients.',
+      technologies: ['Deep Learning', 'Medical Imaging', 'PyTorch', 'U-Net', 'Image Segmentation'],
+      imageUrl: '/assets/lung_covid.png',
+      date: 'March 2023',
+      content: lungCTArticleContent
     }
   ];
 

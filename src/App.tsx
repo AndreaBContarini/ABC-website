@@ -149,6 +149,13 @@ function App() {
               <Link to="/research-projects" className={`group ${isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'} rounded-lg shadow-lg p-6 transition-all duration-300 relative overflow-hidden`}>
                 <div className="absolute inset-0 w-1 bg-blue-500 transform scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-in-out origin-bottom"></div>
                 <div className="relative z-10">
+                  <div className="mb-4 overflow-hidden rounded-lg">
+                    <img 
+                      src="/assets/research.png" 
+                      alt="Research & AI Projects" 
+                      className="w-full h-44 object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"
+                    />
+                  </div>
                   <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'} group-hover:translate-x-2 transition-transform duration-300`}>
                     Research & AI Projects
                   </h2>
@@ -160,6 +167,13 @@ function App() {
               <Link to="/automation-projects" className={`group ${isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'} rounded-lg shadow-lg p-6 transition-all duration-300 relative overflow-hidden`}>
                 <div className="absolute inset-0 w-1 bg-green-500 transform scale-y-0 group-hover:scale-y-100 transition-transform duration-500 ease-in-out origin-bottom"></div>
                 <div className="relative z-10">
+                  <div className="mb-4 overflow-hidden rounded-lg">
+                    <img 
+                      src="/assets/automation.png" 
+                      alt="AI Automation Solutions" 
+                      className="w-full h-44 object-cover transform group-hover:scale-105 transition-transform duration-500 ease-in-out"
+                    />
+                  </div>
                   <h2 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'} group-hover:translate-x-2 transition-transform duration-300`}>
                     AI Automation Solutions
                   </h2>
