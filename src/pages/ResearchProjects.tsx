@@ -97,6 +97,8 @@ We explored two approaches for collision detection:
 
 We also added visual effects such as **animated life bars and wake trails** to enhance clarity and analysis.
 
+{{VIDEO_PLACEHOLDER}}
+
 ---
 
 ## 🚀 What's Next?
@@ -110,7 +112,8 @@ We also added visual effects such as **animated life bars and wake trails** to e
 
 ## 🔗 Resources
 
-- 👨‍💻 GitHub Repository: [AndreaBContarini/Computer_Vision_Beyblade](https://github.com/AndreaBContarini/Computer_Vision_Beyblade)
+- 📄 [Spin-Still Detection on Colab](https://colab.research.google.com/drive/1RUMcqxHviCsavNz8NgW24dRUeKXDkTlr?usp=chrome_ntp)
+- 👨‍💻 [Andrea's GitHub Repository](https://github.com/AndreaBContarini/Computer_Vision_Beyblade)
 - 📚 Reference Articles:
   - [YOLOv8 Transfer Learning on Blood Cells](https://plainenglish.io/blog/transfer-learning-with-yolov8-a-case-study)
   - [Golf Ball Detection with Kalman Filter](https://arxiv.org/pdf/2012.09393)
@@ -121,7 +124,7 @@ We also added visual effects such as **animated life bars and wake trails** to e
       id: 1,
       title: 'Beyblade Detection & Tracking with Computer Vision',
       description: 'Real-time system to detect, track, and analyze spinning Beyblade tops including collision detection using deep learning and tracking algorithms.',
-      technologies: ['Computer Vision', 'YOLOv8', 'Kalman Filter', 'Object Tracking'],
+      technologies: ['Computer Vision', 'YOLOv8', 'OpenCV', 'Kalman Filter', 'Object Tracking'],
       imageUrl: '/assets/cover_beyblade.png',
       date: 'May 2023',
       content: beybladeArticleContent
@@ -200,72 +203,117 @@ We also added visual effects such as **animated life bars and wake trails** to e
   );
 
   // Render single project
-  const renderProject = (project: ResearchProject) => (
-    <>
-      <div className="mb-6 flex items-center">
-        <button
-          onClick={() => setSelectedProject(null)}
-          className={`mr-4 flex items-center ${
-            isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-500'
-          }`}
-        >
-          <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          Back to Projects
-        </button>
-        <h1 className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
-          {project.title}
-        </h1>
-      </div>
-
-      <article className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg shadow-lg p-8 mb-10`}>
-        <div className="prose max-w-none prose-lg mx-auto">
-          <div className={`${isDarkMode ? 'prose-invert' : ''}`}>
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              components={{
-                h1: ({node, ...props}) => <h1 className={`text-3xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} {...props} />,
-                h2: ({node, ...props}) => <h2 className={`text-2xl font-bold mt-8 mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} {...props} />,
-                h3: ({node, ...props}) => <h3 className={`text-xl font-bold mt-6 mb-3 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} {...props} />,
-                h4: ({node, ...props}) => <h4 className={`text-lg font-bold mt-5 mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} {...props} />,
-                p: ({node, ...props}) => <p className={`mb-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`} {...props} />,
-                a: ({node, ...props}) => <a className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer" {...props} />,
-                ul: ({node, ...props}) => <ul className="list-disc pl-6 mb-4" {...props} />,
-                ol: ({node, ...props}) => <ol className="list-decimal pl-6 mb-4" {...props} />,
-                li: ({node, ...props}) => <li className="mb-1" {...props} />,
-                img: ({node, ...props}) => (
-                  <div className="my-6">
-                    <img className="mx-auto rounded-lg shadow-lg max-w-full" {...props} />
-                    {props.alt && <p className="text-center text-sm italic mt-2">{props.alt}</p>}
-                  </div>
-                ),
-                strong: ({node, ...props}) => <strong className="font-bold" {...props} />,
-                em: ({node, ...props}) => <em className="italic" {...props} />,
-                blockquote: ({node, ...props}) => (
-                  <blockquote className={`border-l-4 ${isDarkMode ? 'border-gray-600 bg-gray-700' : 'border-gray-300 bg-gray-100'} pl-4 py-2 italic my-4`} {...props} />
-                ),
-                code: ({node, ...props}) => (
-                  <code className={`${isDarkMode ? 'bg-gray-700' : 'bg-gray-100'} rounded px-1 py-0.5`} {...props} />
-                ),
-                pre: ({node, ...props}) => (
-                  <pre className={`${isDarkMode ? 'bg-gray-700' : 'bg-gray-100'} rounded p-4 overflow-x-auto my-4`} {...props} />
-                ),
-                hr: ({node, ...props}) => <hr className={`${isDarkMode ? 'border-gray-600' : 'border-gray-300'} my-8`} {...props} />,
-              }}
-            >
-              {project.content}
-            </ReactMarkdown>
+  const renderProject = (project: ResearchProject) => {
+    // Funzione per renderizzare video embedded in modo sicuro
+    const renderHtmlVideo = () => {
+      if (selectedProject?.id === 1) {  // Solo per l'articolo Beyblade
+        return (
+          <div className="relative pb-[56.25%] h-0 overflow-hidden max-w-full my-8">
+            <iframe 
+              className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg" 
+              width="560" 
+              height="315" 
+              src="https://www.youtube.com/embed/atZ-MPWE14Q?si=_5PzLXksdL2Q9CFD" 
+              title="Beyblade Detection & Tracking Demo" 
+              frameborder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allowfullscreen>
+            </iframe>
           </div>
+        );
+      }
+      return null;
+    };
+
+    // Modifica il contenuto Markdown per rimuovere la sezione HTML che mostra l'iframe
+    const processedContent = project.content?.replace(
+      /<div class="relative pb-\[56\.25%\].*?<\/div>/s,
+      '{{VIDEO_PLACEHOLDER}}'
+    );
+
+    return (
+      <>
+        <div className="mb-6 flex items-center">
+          <button
+            onClick={() => setSelectedProject(null)}
+            className={`mr-4 flex items-center ${
+              isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-500'
+            }`}
+          >
+            <svg className="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Back to Projects
+          </button>
+          <h1 className={`text-3xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+            {project.title}
+          </h1>
         </div>
-        <div className="text-right mt-6 italic">
-          <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-            Posted on {project.date}
-          </p>
-        </div>
-      </article>
-    </>
-  );
+
+        <article className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg shadow-lg p-8 mb-10`}>
+          <div className="prose max-w-none prose-lg mx-auto">
+            <div className={`${isDarkMode ? 'prose-invert' : ''}`}>
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  h1: ({node, ...props}) => <h1 className={`text-3xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} {...props} />,
+                  h2: ({node, ...props}) => <h2 className={`text-2xl font-bold mt-8 mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} {...props} />,
+                  h3: ({node, ...props}) => <h3 className={`text-xl font-bold mt-6 mb-3 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} {...props} />,
+                  h4: ({node, ...props}) => <h4 className={`text-lg font-bold mt-5 mb-2 ${isDarkMode ? 'text-white' : 'text-gray-900'}`} {...props} />,
+                  p: ({node, ...props}) => {
+                    // Sostituisci il placeholder con l'iframe
+                    if (props.children && props.children[0] === '{{VIDEO_PLACEHOLDER}}') {
+                      return renderHtmlVideo();
+                    }
+                    return <p className={`mb-4 ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`} {...props} />;
+                  },
+                  a: ({node, ...props}) => <a className="text-blue-500 hover:underline" target="_blank" rel="noopener noreferrer" {...props} />,
+                  ul: ({node, ...props}) => <ul className="list-disc pl-6 mb-4" {...props} />,
+                  ol: ({node, ...props}) => <ol className="list-decimal pl-6 mb-4" {...props} />,
+                  li: ({node, ...props}) => <li className="mb-1" {...props} />,
+                  img: ({node, ...props}) => (
+                    <div className="my-6">
+                      <img className="mx-auto rounded-lg shadow-lg max-w-full" {...props} />
+                      {props.alt && <p className="text-center text-sm italic mt-2">{props.alt}</p>}
+                    </div>
+                  ),
+                  strong: ({node, ...props}) => <strong className="font-bold" {...props} />,
+                  em: ({node, ...props}) => <em className="italic" {...props} />,
+                  blockquote: ({node, ...props}) => (
+                    <blockquote className={`border-l-4 ${isDarkMode ? 'border-gray-600 bg-gray-700' : 'border-gray-300 bg-gray-100'} pl-4 py-2 italic my-4`} {...props} />
+                  ),
+                  code: ({node, ...props}) => (
+                    <code className={`${isDarkMode ? 'bg-gray-700' : 'bg-gray-100'} rounded px-1 py-0.5`} {...props} />
+                  ),
+                  pre: ({node, ...props}) => (
+                    <pre className={`${isDarkMode ? 'bg-gray-700' : 'bg-gray-100'} rounded p-4 overflow-x-auto my-4`} {...props} />
+                  ),
+                  hr: ({node, ...props}) => <hr className={`${isDarkMode ? 'border-gray-600' : 'border-gray-300'} my-8`} {...props} />,
+                }}
+              >
+                {processedContent}
+              </ReactMarkdown>
+              
+              {/* Aggiungiamo il video dopo la sezione Results */}
+              {selectedProject?.id === 1 && !processedContent?.includes('{{VIDEO_PLACEHOLDER}}') && (
+                <div className="my-8">
+                  <h3 className={`text-xl font-bold mt-6 mb-3 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+                    Demo Video
+                  </h3>
+                  {renderHtmlVideo()}
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="text-right mt-6 italic">
+            <p className={`text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+              Posted on {project.date}
+            </p>
+          </div>
+        </article>
+      </>
+    );
+  };
 
   return (
     <div className={`min-h-screen ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-gray-50 text-gray-900'}`}>
