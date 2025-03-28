@@ -127,7 +127,7 @@ Thanks to Martes AI, the Santa Lucia Eye Clinic in Cosenza has transformed the m
       date: 'March 20, 2025',
       thumbnail: 'https://i.ibb.co/0yvHGXZK/scenario-clinica.png',
       content: santaLuciaArticle,
-      technologies: ['AI Classification', 'Email Automation', 'Voiceflow', 'Make']
+      technologies: ['AI Classification', 'Email Automation', 'Voiceflow', 'Make', 'API Intergation']
     }
   ];
 
