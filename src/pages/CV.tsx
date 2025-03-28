@@ -20,7 +20,7 @@ function CV() {
     window.scrollTo(0, 0);
     
     // Automatically open CV in new tab
-    window.open('/assets/cv.pdf', '_blank');
+    window.open('/assets/Resume_ABC.pdf', '_blank');
   }, []);
 
   // Path to CV in public folder
@@ -42,7 +42,7 @@ function CV() {
             <div className="flex justify-center space-x-4 mb-8">
               <a 
                 href={cvPath} 
-                download="Andrea_Belli_Contarini_CV.pdf"
+                download="Andrea_Belli_Contarini_Resume.pdf"
                 className={`inline-flex items-center px-4 py-2 rounded-md ${
                   isDarkMode 
                   ? 'bg-blue-600 hover:bg-blue-700 text-white' 
