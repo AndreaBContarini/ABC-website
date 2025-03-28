@@ -63,7 +63,7 @@ We trained a neural network to classify the spinning state of each Beyblade usin
 - **Training**: First 10 layers frozen to retain pretrained features
 - **Result**: Robust classification with good accuracy on unseen data
 
-![Spin vs Still Classification](/assets/spinVSstill.png)
+<img src="/assets/spinVSstill.png" alt="Spin vs Still Classification" width="80%" />
 
 > 📄 See the notebook: [Spin-Still Detection on Colab](https://colab.research.google.com/drive/1RUMcqxHviCsavNz8NgW24dRUeKXDkTlr?usp=chrome_ntp)
 
@@ -86,8 +86,6 @@ We explored two approaches for collision detection:
 - **Cooldown logic** to avoid repeated counts
 
 ![Overall Workflow](/assets/workflow.png)
-
-> 📄 See the notebook: [Collision Detection on Colab](https://colab.research.google.com/drive/198SISJwn60p8h-UMt8uNjTf3GRu2wmUw#scrollTo=yVI7j5xc39Io)
 
 ---
 
@@ -114,8 +112,8 @@ We also added visual effects such as **animated life bars and wake trails** to e
 
 - 👨‍💻 GitHub Repository: [AndreaBContarini/Computer_Vision_Beyblade](https://github.com/AndreaBContarini/Computer_Vision_Beyblade)
 - 📚 Reference Articles:
-  - YOLOv8 Transfer Learning on Blood Cells
-  - Golf Ball Detection with Kalman Filter
+  - [YOLOv8 Transfer Learning on Blood Cells](https://plainenglish.io/blog/transfer-learning-with-yolov8-a-case-study)
+  - [Golf Ball Detection with Kalman Filter](https://arxiv.org/pdf/2012.09393)
 `;
 
   const researchProjects: ResearchProject[] = [
@@ -127,38 +125,6 @@ We also added visual effects such as **animated life bars and wake trails** to e
       imageUrl: '/assets/cover_beyblade.png',
       date: 'May 2023',
       content: beybladeArticleContent
-    },
-    {
-      id: 2,
-      title: 'Visual Tracking and Collision Recognition',
-      description: 'Advanced simulation system for spinning top dynamics using computer vision and ML techniques. This project uses OpenCV for tracking the motion of spinning tops and TensorFlow for predicting collision dynamics.',
-      technologies: ['Python', 'OpenCV', 'TensorFlow', 'Physics Simulation'],
-      imageUrl: 'https://images.unsplash.com/photo-1501139083538-0139583c060f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      date: 'March 2023'
-    },
-    {
-      id: 3,
-      title: 'Osteoporosis Detection in MRI Scans',
-      description: 'Machine learning classification system for early detection of osteoporosis using MRI scan analysis. Utilized convolutional neural networks to identify bone density patterns indicative of early-stage osteoporosis.',
-      technologies: ['PyTorch', 'Medical Imaging', 'Deep Learning', 'CNN'],
-      imageUrl: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      date: 'January 2023'
-    },
-    {
-      id: 4,
-      title: 'Jet Flavor Classification',
-      description: 'Deep neural network implementation for particle physics jet classification in high-energy physics. This project aims to accurately identify different types of particle jets in LHC data.',
-      technologies: ['Python', 'Deep Learning', 'Particle Physics', 'Data Analysis'],
-      imageUrl: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      date: 'November 2022'
-    },
-    {
-      id: 5,
-      title: 'Self-Supervised Learning for Image Recognition',
-      description: 'Implementation of a self-supervised learning approach for image recognition tasks with limited labeled data. Explored contrastive learning techniques to improve model robustness.',
-      technologies: ['TensorFlow', 'Self-Supervised Learning', 'Computer Vision', 'Data Augmentation'],
-      imageUrl: 'https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      date: 'September 2022'
     }
   ];
 
