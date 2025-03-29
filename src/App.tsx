@@ -6,6 +6,7 @@ import ProjectCard from './components/ProjectCard';
 import ResearchProjects from './pages/ResearchProjects';
 import AutomationProjects from './pages/AutomationProjects';
 import CV from './pages/CV';
+import Portfolio from './pages/Portfolio';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -201,6 +202,7 @@ function App() {
         <Route path="/automation-projects" element={<AutomationProjects />} />
         <Route path="/automation-projects/:articleSlug" element={<AutomationProjects />} />
         <Route path="/cv" element={<CV />} />
+        <Route path="/portfolio" element={<Portfolio />} />
         {/* Fall back route for 404 pages */}
         <Route path="*" element={
           <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">

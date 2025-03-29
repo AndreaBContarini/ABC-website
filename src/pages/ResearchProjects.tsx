@@ -34,6 +34,9 @@ function ResearchProjects() {
       if (project) {
         setSelectedProject(project);
       }
+    } else {
+      // Se non c'è un projectSlug nell'URL, imposta selectedProject a null
+      setSelectedProject(null);
     }
   }, [params.projectSlug]);
 

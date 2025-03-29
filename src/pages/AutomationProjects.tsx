@@ -36,6 +36,9 @@ function AutomationProjects() {
       if (article) {
         setSelectedArticle(article);
       }
+    } else {
+      // Se non c'è un articleSlug nell'URL, imposta selectedArticle a null
+      setSelectedArticle(null);
     }
   }, [params.articleSlug]);
 
