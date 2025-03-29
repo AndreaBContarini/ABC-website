@@ -3,6 +3,9 @@ import { Link, BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ProjectCard from './components/ProjectCard';
+import ResearchProjects from './pages/ResearchProjects';
+import AutomationProjects from './pages/AutomationProjects';
+import CV from './pages/CV';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -197,6 +200,17 @@ function App() {
         <Route path="/research-projects/:projectSlug" element={<ResearchProjects />} />
         <Route path="/automation-projects" element={<AutomationProjects />} />
         <Route path="/automation-projects/:articleSlug" element={<AutomationProjects />} />
+        <Route path="/cv" element={<CV />} />
+        {/* Fall back route for 404 pages */}
+        <Route path="*" element={
+          <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
+            <h1 className="text-4xl font-bold mb-4">Pagina non trovata</h1>
+            <p className="text-lg mb-8">La pagina che stai cercando non esiste.</p>
+            <Link to="/" className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+              Torna alla home
+            </Link>
+          </div>
+        } />
       </Routes>
     </Router>
   );
