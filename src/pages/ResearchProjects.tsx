@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -12,16 +13,29 @@ interface ResearchProject {
   imageUrl: string;
   date: string;
   content?: string;
+  slug: string;
 }
 
 function ResearchProjects() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [selectedProject, setSelectedProject] = useState<ResearchProject | null>(null);
+  const params = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     setIsDarkMode(prefersDark);
   }, []);
+
+  // Detect project from URL on load
+  useEffect(() => {
+    if (params.projectSlug) {
+      const project = researchProjects.find(p => p.slug === params.projectSlug);
+      if (project) {
+        setSelectedProject(project);
+      }
+    }
+  }, [params.projectSlug]);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -31,6 +45,18 @@ function ResearchProjects() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [selectedProject]);
+
+  // Handle project selection with URL update
+  const handleSelectProject = (project: ResearchProject) => {
+    setSelectedProject(project);
+    navigate(`/research-projects/${project.slug}`);
+  };
+
+  // Handle back button with URL update
+  const handleBackToProjects = () => {
+    setSelectedProject(null);
+    navigate('/research-projects');
+  };
 
   // Markdown content for the Beyblade article
   const beybladeArticleContent = `# 🌀 Beyblade Detection & Tracking with Computer Vision
@@ -428,6 +454,64 @@ Features were normalized and invalid entries replaced with -1.
 - 📊 Dataset: [UCI ML Physics Dataset](http://mlphysics.ics.uci.edu/data/hb_jet_flavor_2016/)
 `;
 
+  // Markdown content for the Lennard-Jones article
+  const lennardJonesArticleContent = `# 🧪 Simulating Lennard-Jones Systems with Molecular Dynamics
+
+## Overview
+
+This project focuses on simulating a 3D system of interacting particles using **Molecular Dynamics (MD)** in the canonical **NTV ensemble**. Implemented entirely in **C++**, the code models the thermodynamic behavior of particles interacting via the **Lennard-Jones potential**, using the **Tuckerman time-reversible algorithm** and incorporating temperature control via **Velocity Rescaling** and the **Nosé-Hoover thermostat**.
+
+🔗 GitHub repository: [AndreaBContarini/MD_simulation](https://github.com/AndreaBContarini/MD_simulation)
+
+---
+
+## ⚙️ Simulation Setup
+
+- **512 particles** in a cubic box with periodic boundary conditions  
+- **Lennard-Jones potential** truncated at cutoff radius \`r_c = 2.5σ\`  
+- Simulations run at reduced temperature \`T* = 1.4\` and densities \`ρ* = 0.1 – 0.4\`  
+- Observables: **reduced pressure** and **reduced potential energy** per particle  
+- Tail corrections applied to account for truncated potential effects
+
+---
+
+## 🧠 Algorithms & Techniques
+
+### Tuckerman Integration
+
+Time-reversible MD integrator based on Trotter factorization of the Liouville operator, implemented as a Velocity Verlet scheme.
+
+### Temperature Control
+
+- **Velocity Rescaling** during equilibration  
+- **Nosé-Hoover Thermostat** for accurate canonical ensemble dynamics
+
+### Code Structure
+
+Key modules include:
+- \`pvector.hpp\`: vector operations  
+- \`params.hpp\`: simulation parameters  
+- \`particle.hpp\`: particle dynamics and interactions  
+- \`sim.hpp\`: simulation loop, observables, and thermodynamic tracking  
+
+---
+
+## 📊 Results & Analysis
+
+- Simulation results match the literature values reported by Johnson et al. (1993)  
+- Thermodynamic observables show convergence and consistency under both thermostat strategies  
+- Linear dependence of energy error on \`dt²\` confirms the 2nd-order accuracy of the integrator  
+- Visualizations (2D/3D particle configs) were generated using Python + Google Colab
+
+---
+
+## ✅ Final Remarks
+
+The simulation achieved high accuracy, validating both the numerical scheme and the thermodynamic modeling. The **Nosé-Hoover thermostat** especially allowed for more realistic fluctuations, closely replicating canonical ensemble behavior.
+
+📄 [Read the full technical article (PDF)](https://github.com/AndreaBContarini/MD_simulation/blob/main/Article.pdf)
+`;
+
   const researchProjects: ResearchProject[] = [
     {
       id: 1,
@@ -436,7 +520,8 @@ Features were normalized and invalid entries replaced with -1.
       technologies: ['Computer Vision', 'YOLOv8', 'OpenCV', 'Kalman Filter', 'Object Tracking'],
       imageUrl: '/assets/cover_beyblade.png',
       date: 'January 2025',
-      content: beybladeArticleContent
+      content: beybladeArticleContent,
+      slug: 'beyblade-detection-tracking'
     },
     {
       id: 2,
@@ -445,7 +530,8 @@ Features were normalized and invalid entries replaced with -1.
       technologies: ['Deep Learning', 'Medical Imaging', 'PyTorch', 'U-Net', 'Image Segmentation'],
       imageUrl: '/assets/lung_covid.png',
       date: 'September 2022',
-      content: lungCTArticleContent
+      content: lungCTArticleContent,
+      slug: 'lung-ct-scan-segmentation'
     },
     {
       id: 3,
@@ -454,7 +540,8 @@ Features were normalized and invalid entries replaced with -1.
       technologies: ['Machine Learning', 'MRI', 'PyTorch', 'Dimensionality Reduction', 'Medical Imaging'],
       imageUrl: '/assets/ML_NMR.png',
       date: 'July 2024',
-      content: nmrMLArticleContent
+      content: nmrMLArticleContent,
+      slug: 'ml-nmr-imaging'
     },
     {
       id: 4,
@@ -463,7 +550,18 @@ Features were normalized and invalid entries replaced with -1.
       technologies: ['Deep Learning', 'PyTorch', 'High Energy Physics', 'LSTM', 'Classification'],
       imageUrl: '/assets/LHC_ML.png',
       date: 'January 2023',
-      content: jetFlavorArticleContent
+      content: jetFlavorArticleContent,
+      slug: 'jet-flavor-tagging'
+    },
+    {
+      id: 5,
+      title: 'Simulating Lennard-Jones Systems with Molecular Dynamics',
+      description: 'A C++ implementation of Molecular Dynamics simulations for thermodynamic analysis of particles interacting via the Lennard-Jones potential using Tuckerman algorithm.',
+      technologies: ['C++', 'Molecular Dynamics', 'Physics Simulation', 'Thermodynamics', 'Scientific Computing'],
+      imageUrl: '/assets/MD.png',
+      date: 'January 2024',
+      content: lennardJonesArticleContent,
+      slug: 'lennard-jones-molecular-dynamics'
     }
   ];
 
@@ -486,7 +584,8 @@ Features were normalized and invalid entries replaced with -1.
           <article 
             key={project.id}
             className={`${isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'} rounded-lg shadow-lg overflow-hidden transition-all duration-300 ${project.content ? 'cursor-pointer' : ''}`}
-            onClick={() => project.content ? setSelectedProject(project) : null}
+            onClick={() => project.content ? handleSelectProject(project) : null}
+            id={project.slug}
           >
             <div className="h-60 overflow-hidden">
               <img 
@@ -573,7 +672,7 @@ Features were normalized and invalid entries replaced with -1.
       <>
         <div className="mb-6 flex items-center">
           <button
-            onClick={() => setSelectedProject(null)}
+            onClick={handleBackToProjects}
             className={`mr-4 flex items-center ${
               isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-500'
             }`}
@@ -585,7 +684,7 @@ Features were normalized and invalid entries replaced with -1.
           </button>
         </div>
 
-        <article className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg shadow-lg p-8 mb-10`}>
+        <article className={`${isDarkMode ? 'bg-gray-800' : 'bg-white'} rounded-lg shadow-lg p-8 mb-10`} id={project.slug}>
           <div className="prose max-w-none prose-lg mx-auto">
             <div className={`${isDarkMode ? 'prose-invert' : ''}`}>
               <ReactMarkdown

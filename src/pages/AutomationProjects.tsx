@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { useParams, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 
@@ -20,11 +21,23 @@ function AutomationProjects() {
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const articlesPerPage = 4;
+  const params = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     setIsDarkMode(prefersDark);
   }, []);
+
+  // Detect article from URL on load
+  useEffect(() => {
+    if (params.articleSlug) {
+      const article = articles.find(a => a.slug === params.articleSlug);
+      if (article) {
+        setSelectedArticle(article);
+      }
+    }
+  }, [params.articleSlug]);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -34,6 +47,18 @@ function AutomationProjects() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [selectedArticle]);
+
+  // Handle article selection with URL update
+  const handleSelectArticle = (article: Article) => {
+    setSelectedArticle(article);
+    navigate(`/automation-projects/${article.slug}`);
+  };
+
+  // Handle back button with URL update
+  const handleBackToArticles = () => {
+    setSelectedArticle(null);
+    navigate('/automation-projects');
+  };
 
   // Markdown content for the article
   const santaLuciaArticle = `# AI Automation for Santa Lucia Eye Clinic
@@ -249,7 +274,7 @@ In October 2024 alone, the AI system helped generate **€82,170** in sales. Her
           <article 
             key={article.id}
             className={`${isDarkMode ? 'bg-gray-800 hover:bg-gray-700' : 'bg-white hover:bg-gray-50'} rounded-lg shadow-lg overflow-hidden transition-all duration-300 cursor-pointer`}
-            onClick={() => setSelectedArticle(article)}
+            onClick={() => handleSelectArticle(article)}
             id={article.slug}
           >
             <div className="h-60 overflow-hidden">
@@ -333,7 +358,7 @@ In October 2024 alone, the AI system helped generate **€82,170** in sales. Her
     <>
       <div className="mb-6 flex items-center">
         <button
-          onClick={() => setSelectedArticle(null)}
+          onClick={handleBackToArticles}
           className={`mr-4 flex items-center ${
             isDarkMode ? 'text-green-400 hover:text-green-300' : 'text-green-600 hover:text-green-500'
           }`}
