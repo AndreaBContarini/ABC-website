@@ -125,19 +125,19 @@ function App() {
                         </h1>
                         <div className="space-y-6">
                           <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                            I'm a physicist passionate about Computational Physics and Machine Learning. Currently, I'm pursuing my Master's degree at the University of Geneva, in Switzerland.
+                            I'm a <strong>physicist</strong> passionate about Computational Physics and Machine Learning. Currently, I'm pursuing my Physics Master's degree at Sapienza University of Rome and University of Geneva.
                           </p>
                           <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                            🔬 My research interests lie in Computer Vision, AI-driven automation, and data analysis. My latest projects include Visual Tracking in Spinning Top Simulations and Machine Learning applications in Medical Imaging.
+                            🔬 My research interests lie in <strong>Computer Vision, Machine Learning and AI-driven automations</strong>. My latest projects include Visual Tracking in Spinning Top Simulations and Machine Learning applications in Medical Imaging.
                           </p>
                           <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                            🛠️ I'm the Co-Founder & Chief AI Solutions Architect at <a href="https://www.martes-ai.com" target="_blank" rel="noopener noreferrer" className={`${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'} transition-colors`}>Martes AI</a>, where I develop AI-powered automation tools for business processes. I have experience with automation platforms such as Make, n8n, and Voiceflow.
+                            🛠️ I'm the <strong>Co-Founder at <a href="https://www.martes-ai.com" target="_blank" rel="noopener noreferrer" className={`${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'} transition-colors`}>Martes AI</a></strong>, an AI Automation Agency,where we develop AI-powered solutions for business processes. I have experience with automation platforms such as Make, n8n, and Voiceflow.
                           </p>
                           <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                            📊 Previously, I worked as a Data Analyst intern at SAS Institute, focusing on Customer Intelligence and CRM analytics, and as an Account Manager Assistant at Randstad.
+                            📊 Previously, I worked as a Data Analyst intern at <a href="https://www.sas.com" target="_blank" rel="noopener noreferrer" className={`${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'} transition-colors`}>SAS</a>, focusing on Customer Intelligence and CRM analytics.
                           </p>
                           <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                            📚 Beyond work, I enjoy sharing knowledge as a tutor in math and physics, and I'm always eager to explore new AI applications!
+                            📚 Beyond work, I enjoy sharing knowledge as a tutor in math, physics and computer science, and I'm always eager to explore new AI applications!
                           </p>
                         </div>
                       </div>
