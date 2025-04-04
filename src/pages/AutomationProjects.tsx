@@ -223,6 +223,63 @@ In October 2024 alone, the AI system helped generate **€82,170** in sales. Her
 ![Contract Screenshot](https://assets.zyrosite.com/cdn-cgi/image/format=auto,w=861,h=549,fit=crop/mk39w0PZ1DIe7Dp6/whatsapp-image-2024-11-01-at-23.22.10-A3Qw77Ok5PfMMzGy.jpeg)
 `;
 
+  // Markdown content for the newsletter agent article
+  const newsletterArticle = `# AI Agent for a Scientific Newsletter
+
+> _"Martes AI's Agent completely transformed our newsletter: reliable scientific content, professional images... all just one click away."_  
+> — Davide Beccetti, CEO @ Shape-UP
+
+## Introduction
+
+In a context where **source reliability** and **operational efficiency** are key, [**Shape-UP**](https://shape-up.it/en/home-en/), a company in the health and wellness sector, turned to **Martes AI** to optimize the creation and distribution of its scientific newsletter. The goal? To **automate the entire editorial process** while maintaining the credibility of sources and high visual standards — all without sacrificing human control where needed.
+
+![AI Newsletter Automation Workflow](/assets/scenario_make_shapeup.png)
+*Diagram showing the automation pipeline developed by Martes AI, from Google Sheets to Mailchimp.*
+
+## The Problem
+
+Before this solution, Shape-UP faced **long production times** for each newsletter. Writing scientific articles manually, finding credible sources, and creating coherent visual content took **several hours per week**. Additionally, formatting and sending campaigns via Mailchimp added more complexity — limiting how frequently newsletters could be sent out.
+
+## The Solution: A Tailored AI Agent
+
+Martes AI designed and implemented a **custom AI Agent**, integrated with **Google Sheets, Make (formerly Integromat)**, and **Mailchimp**, automating the full lifecycle of the scientific newsletter. Here are the core features:
+
+### 1. **Streamlined Input via Google Sheets**
+The main interface is a simple Google Sheet. By entering a **keyword** (e.g., "low carb diet"), the agent triggers a complete automated workflow via webhook.
+
+### 2. **Automated Scientific Research**
+The AI connects directly to **PubMed Central**, retrieving **peer-reviewed scientific articles** relevant to the keyword. All information is **verified and sourced from institutional databases**.
+
+### 3. **Content Summarization and Simplification**
+Once the data is collected, the AI Agent **summarizes and simplifies** the content into a **clear, readable article**, preserving scientific accuracy while making it accessible to a broader audience.
+
+### 4. **Medical Image Generation**
+Using a structured prompt system and AI image generation tools, the agent produces **professional, medically relevant visuals**. These are converted into **public URLs** via Claudinary, ensuring they're easily shareable in newsletters.
+
+### 5. **Editable Content with "Human in the Loop"**
+Shape-UP can **revise articles or images at any point**. The agent incorporates human feedback instantly, generating updated content in seconds.
+
+### 6. **Auto-Formatting and Mailchimp Delivery**
+Once approved, the article is **automatically converted to HTML** and pushed to Mailchimp for distribution. The entire process — from idea to delivery — can be completed in minutes.
+
+## Results
+
+Thanks to the AI Agent implementation:
+
+- **Production time reduced by 90%**, from hours to just minutes per newsletter.
+- **Increased frequency**: from one newsletter a month to multiple per week.
+- **Zero manual effort** in formatting, research, or mailing.
+- **Higher visual and scientific quality**, with sources and references included.
+
+## Conclusions and Lessons Learned
+
+Automation doesn't mean removing the human element — it means **enhancing it with intelligent tools**. The AI Agent built for Shape-UP shows how it's possible to combine **efficiency, quality, and scalability**, even in complex sectors like scientific communication.
+
+This solution serves as a **replicable model** for any organization aiming to transform its communication through smart, accessible AI systems. At Martes AI, we believe innovation should **simplify, not complicate**.
+
+Visit us: [www.martes-ai.com](https://www.martes-ai.com)
+`;
+
   // Sample articles list
   const articles = [
     {
@@ -244,6 +301,16 @@ In October 2024 alone, the AI system helped generate **€82,170** in sales. Her
       content: whatsappAgentArticle,
       technologies: ['WhatsApp Business API', 'AI Chatbot', 'LLM Integration', 'Google Sheets', 'Travel Tech'],
       slug: 'whatsapp-agent-travel-agency'
+    },
+    {
+      id: 3,
+      title: 'AI Agent for a Scientific Newsletter',
+      summary: 'How Martes AI automated the entire editorial process for a scientific newsletter, reducing production time by 90% while maintaining high quality standards.',
+      date: 'April 4, 2025',
+      thumbnail: '/assets/newsletter_AI.png',
+      content: newsletterArticle,
+      technologies: ['Content Automation', 'Make Integration', 'PubMed API', 'Mailchimp', 'AI Images'],
+      slug: 'scientific-newsletter-agent'
     }
   ];
 
