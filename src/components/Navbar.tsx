@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X, Moon, Sun } from 'lucide-react';
 
 interface NavbarProps {
@@ -9,15 +9,24 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleHomeClick = () => {
+    navigate('/');
+    window.scrollTo(0, 0);
+  };
 
   return (
     <nav className={`fixed w-full z-50 ${isDarkMode ? 'bg-gray-900' : 'bg-white'} shadow-lg`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className={`text-xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
+            <button 
+              onClick={handleHomeClick}
+              className={`text-xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'} hover:opacity-80 transition-opacity`}
+            >
               Andrea's Homepage
-            </Link>
+            </button>
           </div>
 
           {/* Desktop Navigation */}

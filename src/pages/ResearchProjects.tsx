@@ -457,6 +457,79 @@ Features were normalized and invalid entries replaced with -1.
 - 📊 Dataset: [UCI ML Physics Dataset](http://mlphysics.ics.uci.edu/data/hb_jet_flavor_2016/)
 `;
 
+  // Markdown content for the AI File Operations Agent article
+  const aiFileOperationsArticleContent = `# AI-Powered File Operations Agent
+
+## Overview
+
+This project presents an intelligent autonomous agent designed for comprehensive CRUD file operations, featuring both CLI interface and Model Context Protocol (MCP) integration. The system leverages advanced artificial intelligence to analyze, manage, and manipulate files through natural language commands, creating a seamless bridge between human intent and file system operations.
+
+The architecture offers two distinct operational approaches, each optimized for specific use cases and technical requirements. The first implements a custom ReAct (Reasoning + Acting) architecture with manual tool orchestration and a dual-model system. The second utilizes the modern Pydantic-AI framework for declarative tool orchestration with comprehensive validation capabilities.
+
+![System Architecture](/assets/architecture.png)
+
+## Architectural Approaches
+
+### Custom ReAct Implementation
+
+The primary implementation features a from-scratch ReAct architecture that provides maximum control over reasoning and action cycles. This approach utilizes GPT-4o for primary reasoning and planning tasks, while employing LLaMA 3 8B for cost-effective query validation. The system emphasizes transparency and customization, offering direct control over reasoning loops and tool execution with minimal framework overhead.
+
+This architecture proves particularly effective for performance-critical scenarios where low latency and local execution are paramount. The lightweight structure enables seamless MCP integration while maintaining full transparency for debugging and customization purposes. Direct control over reasoning loops ensures optimal performance in scenarios requiring precise file operation handling.
+
+### Modern Pydantic-AI Framework
+
+The alternative implementation showcases modern agentic frameworks through Pydantic-AI, demonstrating declarative tool orchestration with automatic structured output validation. This approach features built-in error handling, type-safe dependency injection, and framework-managed conversation flow.
+
+The Pydantic-AI implementation maintains identical user interface and functionality while leveraging cutting-edge framework capabilities for streamlined development and robust operation. This approach particularly benefits scenarios where rapid development and built-in validation are prioritized over fine-grained control.
+
+## Core Components and Tools
+
+The system architecture centers around five essential CRUD operations that form the foundation of comprehensive file management capabilities. These tools include directory enumeration with detailed metadata through \`list_files()\`, complete file content retrieval via \`read_file()\`, flexible file creation and modification through \`write_file()\`, secure file removal with \`delete_file()\`, and intelligent file analysis using \`answer_question_about_files()\`.
+
+The centralized tool registry manages orchestration and ensures consistent operation across different agent implementations. The CLI interface provides intuitive local interaction, while the MCP server component enables seamless integration with compatible clients like Claude Desktop. Comprehensive security layers implement query validation, path traversal protection, and safe operation controls.
+
+## Usage and Integration
+
+Both implementations maintain strict adherence to tool-based architecture requirements, ensuring every file operation utilizes appropriate tools with ReAct patterns implementing internal reasoning loops for intelligent decision-making. The system features automatic detection of queries requiring tool execution, providing robust and reliable operation across diverse use cases.
+
+Getting started requires Python 3.8+ with virtual environment setup recommended for optimal dependency management. Installation involves cloning the repository, activating the virtual environment, and installing required dependencies. API configuration requires creating a \`.env\` file with OpenAI and Groq API keys for full functionality.
+
+\`\`\`bash
+# Clone and setup the project
+git clone https://github.com/AndreaBContarini/File_Operations_Agent
+cd File_Operations_Agent
+python -m venv .venv
+source .venv/bin/activate  # Linux/Mac
+pip install -r requirements.txt
+\`\`\`
+
+The custom ReAct agent enables sophisticated natural language interactions such as "Show me all Python files and summarize their functionality" or "Find the most recently modified file and analyze its structure." The Pydantic-AI implementation provides identical capabilities through a modern framework interface, offering the same functionality with enhanced built-in validation and error handling.
+
+## Model Context Protocol Integration
+
+The project provides comprehensive MCP server integration for seamless operation with Claude Desktop and other compatible clients. This integration transforms the agent into a powerful tool accessible directly from Claude Desktop, enabling natural language file operations without leaving the chat interface.
+
+Setup involves configuring API keys in \`mcp_config.json\`, installing the configuration in Claude Desktop, and restarting the application to load the new capabilities. Available MCP tools include natural language query processing, directory listing with metadata, complete file reading, file creation and modification with append support, and secure file deletion capabilities.
+
+## Testing and Quality Assurance
+
+The project includes a comprehensive test suite featuring 40 tests with a 97.5% success rate, thoroughly validating all CRUD components, agent functionality, error scenarios, security measures, and integration capabilities. The optimized test structure includes dedicated files for tools and agents, with shared configuration and fixtures ensuring consistent testing across all components.
+
+Test execution utilizes pytest with options for running complete test suites or specific component tests. The extensive coverage validates tool operations, agent behavior, error handling, security controls, and integration scenarios, ensuring reliability across all operational contexts.
+
+## Security and Performance
+
+Security measures include comprehensive query validation to prevent unsafe operations, path traversal controls for secure file access limitation, thorough input sanitization, and robust error handling. The system demonstrates accurate detection of required file operations, stable tool execution across different scenarios, effective query validation, and production-ready MCP integration.
+
+Performance characteristics include low-latency operation for local execution, efficient resource utilization through the dual-model approach, and scalable architecture supporting both lightweight and feature-rich implementations.
+
+## Future Development and Resources
+
+Planned enhancements include deployment capabilities for Raspberry Pi platforms, dataset expansion and optimization, advanced behavioral analysis features, and integration with additional MCP platforms. The modular architecture supports extensibility and adaptation to emerging requirements in the AI-powered file operations domain.
+
+The complete project is available on [GitHub](https://github.com/AndreaBContarini/File_Operations_Agent) with comprehensive documentation, extensive testing guides, and practical examples demonstrating both architectural approaches. This implementation serves as a robust foundation for intelligent file operations using cutting-edge AI technologies and modern software engineering practices.
+`;
+
   // Markdown content for the Lennard-Jones article
   const lennardJonesArticleContent = `# 🧪 Simulating Lennard-Jones Systems with Molecular Dynamics
 
@@ -518,6 +591,16 @@ The simulation achieved high accuracy, validating both the numerical scheme and 
   const researchProjects: ResearchProject[] = [
     {
       id: 1,
+      title: 'AI-Powered File Operations Agent',
+      description: 'Intelligent autonomous agent for CRUD file operations with CLI interface and MCP integration. Implements ReAct architecture with GPT-4o and LLaMA 3 for natural language file management.',
+      technologies: ['Python', 'GPT-4o', 'LLaMA 3', 'ReAct Pattern', 'MCP', 'CLI', 'Pydantic-AI'],
+      imageUrl: '/assets/File_Op_Agent.png',
+      date: 'June 2025',
+      content: aiFileOperationsArticleContent,
+      slug: 'ai-file-operations-agent'
+    },
+    {
+      id: 2,
       title: 'Beyblade Detection & Tracking with Computer Vision',
       description: 'Real-time system to detect, track, and analyze spinning Beyblade tops including collision detection using deep learning and tracking algorithms.',
       technologies: ['Computer Vision', 'YOLOv8', 'OpenCV', 'Kalman Filter', 'Object Tracking'],
@@ -527,7 +610,7 @@ The simulation achieved high accuracy, validating both the numerical scheme and 
       slug: 'beyblade-detection-tracking'
     },
     {
-      id: 2,
+      id: 3,
       title: 'Lung CT Scan Segmentation with Deep Learning',
       description: 'Deep learning framework for automatic segmentation of lung tissues in CT scan slices, helping to distinguish between normal and pathological tissues in COVID-19 patients.',
       technologies: ['Deep Learning', 'Medical Imaging', 'PyTorch', 'U-Net', 'Image Segmentation'],
@@ -537,7 +620,7 @@ The simulation achieved high accuracy, validating both the numerical scheme and 
       slug: 'lung-ct-scan-segmentation'
     },
     {
-      id: 3,
+      id: 4,
       title: 'Machine Learning Applications in NMR Imaging',
       description: 'Developing ML models to analyze MRI scans of the heel bone for osteoporosis diagnosis, with a focus on dimensionality reduction and latent space clustering.',
       technologies: ['Machine Learning', 'MRI', 'PyTorch', 'Dimensionality Reduction', 'Medical Imaging'],
@@ -547,7 +630,7 @@ The simulation achieved high accuracy, validating both the numerical scheme and 
       slug: 'ml-nmr-imaging'
     },
     {
-      id: 4,
+      id: 5,
       title: 'Jet Flavor Tagging with Deep Neural Networks',
       description: 'Using Deep Neural Networks to classify the flavor of hadronic jets in high-energy physics, with focus on bottom-quark identification for LHC experiments.',
       technologies: ['Deep Learning', 'PyTorch', 'High Energy Physics', 'LSTM', 'Classification'],
@@ -557,7 +640,7 @@ The simulation achieved high accuracy, validating both the numerical scheme and 
       slug: 'jet-flavor-tagging'
     },
     {
-      id: 5,
+      id: 6,
       title: 'Simulating Lennard-Jones Systems with Molecular Dynamics',
       description: 'A C++ implementation of Molecular Dynamics simulations for thermodynamic analysis of particles interacting via the Lennard-Jones potential using Tuckerman algorithm.',
       technologies: ['C++', 'Molecular Dynamics', 'Physics Simulation', 'Thermodynamics', 'Scientific Computing'],
@@ -646,7 +729,7 @@ The simulation achieved high accuracy, validating both the numerical scheme and 
   const renderProject = (project: ResearchProject) => {
     // Funzione per renderizzare video embedded in modo sicuro
     const renderHtmlVideo = () => {
-      if (selectedProject?.id === 1) {  // Solo per l'articolo Beyblade
+      if (selectedProject?.id === 2) {  // Solo per l'articolo Beyblade
         return (
           <div className="relative pb-[56.25%] h-0 overflow-hidden max-w-full my-8">
             <iframe 
@@ -784,7 +867,7 @@ The simulation achieved high accuracy, validating both the numerical scheme and 
               </ReactMarkdown>
               
               {/* Video demo con ancoraggio */}
-              {selectedProject?.id === 1 && (
+              {selectedProject?.id === 2 && (
                 <div id="demo-video" className="my-8 pt-4 border-t border-gray-300 dark:border-gray-700">
                   <h3 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                     🎬 Demo Video: Beyblade Detection & Tracking

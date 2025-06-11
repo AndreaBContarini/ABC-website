@@ -42,7 +42,7 @@ function CV() {
             <div className="flex justify-center space-x-4 mb-8">
               <a 
                 href={cvPath} 
-                download="Andrea_Belli_Contarini_Resume.pdf"
+                download="ABC_Resume.pdf"
                 className={`inline-flex items-center px-4 py-2 rounded-md ${
                   isDarkMode 
                   ? 'bg-blue-600 hover:bg-blue-700 text-white' 

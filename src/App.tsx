@@ -90,14 +90,7 @@ function App() {
                         >
                           <span className="mr-2">🏢</span> Martes AI
                         </a>
-                        <a 
-                          href="https://x.com/andreabelli" 
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`text-sm flex items-center ${isDarkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-600 hover:text-blue-600'} transition-colors`}
-                        >
-                          <span className="mr-2">🐦</span> Twitter
-                        </a>
+
                         <a
                           href="https://www.linkedin.com/in/andreabellicontarini/"
                           target="_blank"

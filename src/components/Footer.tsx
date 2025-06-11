@@ -20,8 +20,8 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode }) => {
             </div>
             <div className="flex items-center space-x-2">
               <Mail className="h-5 w-5" />
-              <a href="mailto:andreabcontarini@martes-ai.com" className="hover:underline">
-                andreabcontarini@martes-ai.com
+              <a href="mailto:andrea@martes-ai.com" className="hover:underline">
+                andrea@martes-ai.com
               </a>
             </div>
           </div>
