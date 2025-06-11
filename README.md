@@ -57,6 +57,6 @@ MIT License
 
 ## Contact
 
-- Email: [your-email@example.com]
+- Email: [andreabcontarini@gmail.com]
 - LinkedIn: [https://www.linkedin.com/in/andreabellicontarini/]
 - GitHub: [https://github.com/AndreaBContarini]
