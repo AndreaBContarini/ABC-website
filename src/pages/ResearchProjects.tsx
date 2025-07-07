@@ -597,11 +597,10 @@ This project presents a sophisticated **Retrieval-Augmented Generation (RAG)** s
 
 Built with a focus on scalability and cost efficiency, the RAG agent processes PDF documents through an advanced pipeline and automatically routes queries to the most appropriate language model based on complexity analysis. This approach achieves significant cost savings while maintaining high-quality responses across diverse query types.
 
-![Technical Architecture](/assets/copertina_RAG_Agent.png)
 
 ---
 
-## 🏗️ Technical Architecture & LangChain Integration
+## Technical Architecture & LangChain Integration
 
 The core system is built around LangChain's modular architecture, providing the perfect foundation for creating flexible and scalable document processing pipelines. The system processes PDF documents through a sophisticated pipeline that begins with document loading using LangChain's **PyPDFLoader**, followed by text chunking with **RecursiveCharacterTextSplitter** to create optimal-sized segments for vector embedding.
 
@@ -611,7 +610,7 @@ The vector storage layer utilizes **Supabase's PostgreSQL database** with the pg
 
 ---
 
-## 🧠 Intelligent LLM Routing & Cost Optimization
+## Intelligent LLM Routing & Cost Optimization
 
 One of the most innovative aspects of this system is its intelligent routing mechanism that automatically selects the most appropriate LLM provider based on query complexity analysis. For simple, factual questions (typically under 50 characters with keywords like "what," "who," "when," "where"), the system routes to **Groq's Llama 3 8B model**, which offers exceptional cost efficiency at approximately $0.0001 per 1K input tokens.
 
@@ -621,7 +620,7 @@ The system achieves **60-80% cost savings** compared to using GPT-4 exclusively,
 
 ---
 
-## 🚀 Production-Ready Features & Scalability
+## Production-Ready Features & Scalability
 
 The system includes comprehensive error handling, logging, and monitoring capabilities that make it suitable for production deployment. The modular architecture allows for easy extension and modification, while the intelligent PDF management system automatically detects changes in the document collection and updates the vector database accordingly.
 
@@ -637,7 +636,7 @@ The system also implements proper security practices with environment-based conf
 
 ---
 
-## 📊 Performance & Cost Analysis
+## Performance & Cost Analysis
 
 The intelligent routing system demonstrates significant cost optimization while maintaining response quality:
 
@@ -651,7 +650,7 @@ The system's query complexity analysis accurately identifies query types, ensuri
 
 ---
 
-## 🔧 Implementation Details
+## Implementation Details
 
 The RAG agent is built with modern Python practices and integrates seamlessly with LangChain's ecosystem:
 
@@ -668,7 +667,7 @@ The system leverages LangChain's powerful abstractions for document processing, 
 
 ---
 
-## 🎯 Use Cases & Applications
+## Use Cases & Applications
 
 This RAG system is particularly well-suited for:
 
@@ -682,13 +681,13 @@ The cost-optimized approach makes it viable for long-term deployment and scaling
 
 ---
 
-## 🔗 Resources & Future Development
+## Resources & Future Development
 
 The complete project is available on [GitHub](https://github.com/AndreaBContarini/RAG_pdf_AGENT) with comprehensive documentation, implementation guides, and practical examples. The modular architecture supports extensibility and adaptation to emerging requirements in the RAG domain.
 
 Planned enhancements include:
 - **Additional LLM provider integrations** for further cost optimization
-- **Advanced query complexity analysis** using machine learning
+- Testing on much higher number of PDFs
 - **Real-time performance monitoring** and analytics
 - **Multi-language support** for international deployments
 - **Enhanced security features** for enterprise environments
@@ -701,9 +700,9 @@ This implementation serves as a robust foundation for building scalable, cost-ef
       id: 1,
       title: 'Cost-Optimized RAG Agent with Multi-Provider LLM Routing',
       description: 'Sophisticated RAG system leveraging LangChain architecture with intelligent cost optimization through multi-provider LLM routing, achieving 60-80% cost savings while maintaining high-quality responses.',
-      technologies: ['Python', 'LangChain', 'OpenAI GPT-4', 'Groq Llama 3', 'Supabase', 'Vector DB', 'RAG'],
+      technologies: ['Python', 'LangChain', 'LLMs', 'Supabase', 'Vector DB', 'RAG'],
       imageUrl: '/assets/copertina_RAG_Agent.png',
-      date: 'December 2024',
+      date: 'July 2025',
       content: ragAgentArticleContent,
       slug: 'cost-optimized-rag-agent'
     },
