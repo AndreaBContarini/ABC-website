@@ -588,9 +588,127 @@ The simulation achieved high accuracy, validating both the numerical scheme and 
 📄 [Read the full technical article (PDF)](https://github.com/AndreaBContarini/MD_simulation/blob/main/Article.pdf)
 `;
 
+  // Markdown content for the RAG Agent article
+  const ragAgentArticleContent = `# 🤖 Cost-Optimized RAG Agent with Multi-Provider LLM Routing
+
+## Overview
+
+This project presents a sophisticated **Retrieval-Augmented Generation (RAG)** system that leverages LangChain's modular architecture while implementing intelligent cost optimization through multi-provider LLM routing. The system demonstrates how to create production-ready AI applications that balance performance, accuracy, and operational costs effectively.
+
+Built with a focus on scalability and cost efficiency, the RAG agent processes PDF documents through an advanced pipeline and automatically routes queries to the most appropriate language model based on complexity analysis. This approach achieves significant cost savings while maintaining high-quality responses across diverse query types.
+
+![Technical Architecture](/assets/copertina_RAG_Agent.png)
+
+---
+
+## 🏗️ Technical Architecture & LangChain Integration
+
+The core system is built around LangChain's modular architecture, providing the perfect foundation for creating flexible and scalable document processing pipelines. The system processes PDF documents through a sophisticated pipeline that begins with document loading using LangChain's **PyPDFLoader**, followed by text chunking with **RecursiveCharacterTextSplitter** to create optimal-sized segments for vector embedding.
+
+The vector storage layer utilizes **Supabase's PostgreSQL database** with the pgvector extension, offering excellent performance for similarity search operations. LangChain's SupabaseVectorStore integration makes this seamless, allowing the system to store document embeddings efficiently and perform semantic search across large document collections. The embedding generation leverages **OpenAI's text-embedding-ada-002 model**, providing high-quality 1536-dimensional vectors that capture semantic meaning effectively.
+
+![Technical diagram of the flow of a RAG agent: from reading PDFs (PyPDFLoader) and splitting them into chunks, generating embeddings, storing them in Supabase Vector DB, to intelligent routing between Groq Llama 3 8B and OpenAI GPT-4 models based on query complexity.](/assets/diagram_RAG.png)
+
+---
+
+## 🧠 Intelligent LLM Routing & Cost Optimization
+
+One of the most innovative aspects of this system is its intelligent routing mechanism that automatically selects the most appropriate LLM provider based on query complexity analysis. For simple, factual questions (typically under 50 characters with keywords like "what," "who," "when," "where"), the system routes to **Groq's Llama 3 8B model**, which offers exceptional cost efficiency at approximately $0.0001 per 1K input tokens.
+
+For complex queries requiring detailed explanations, comparisons, or multi-part reasoning, the system automatically switches to **OpenAI's GPT-4**, which provides superior reasoning capabilities despite higher costs. This routing strategy is implemented through a sophisticated query analysis function that examines query length, complexity indicators, and semantic patterns.
+
+The system achieves **60-80% cost savings** compared to using GPT-4 exclusively, while maintaining high-quality responses for complex queries. The integration with LangChain's **LLMChain** and **ConversationChain** components ensures smooth transitions between different LLM providers and maintains conversation context appropriately.
+
+---
+
+## 🚀 Production-Ready Features & Scalability
+
+The system includes comprehensive error handling, logging, and monitoring capabilities that make it suitable for production deployment. The modular architecture allows for easy extension and modification, while the intelligent PDF management system automatically detects changes in the document collection and updates the vector database accordingly.
+
+Key production features include:
+- **Automatic document change detection** and vector database updates
+- **Comprehensive error handling** and graceful degradation
+- **Detailed logging** for monitoring and debugging
+- **Environment-based configuration** management
+- **Secure API key handling** and access controls
+- **Scalable architecture** supporting multiple document collections
+
+The system also implements proper security practices with environment-based configuration management and secure API key handling, ensuring robust operation in production environments.
+
+---
+
+## 📊 Performance & Cost Analysis
+
+The intelligent routing system demonstrates significant cost optimization while maintaining response quality:
+
+- **Simple queries**: Routed to Groq Llama 3 8B (~$0.0001/1K tokens)
+- **Complex queries**: Routed to OpenAI GPT-4 (~$0.03/1K tokens)
+- **Overall cost reduction**: 60-80% compared to GPT-4-only approach
+- **Response quality**: Maintained across all query types
+- **Processing speed**: Optimized for real-time interactions
+
+The system's query complexity analysis accurately identifies query types, ensuring optimal resource allocation and cost management.
+
+---
+
+## 🔧 Implementation Details
+
+The RAG agent is built with modern Python practices and integrates seamlessly with LangChain's ecosystem:
+
+\`\`\`python
+# Example of the intelligent routing logic
+def route_query(query: str) -> str:
+    if len(query) < 50 and any(word in query.lower() for word in ['what', 'who', 'when', 'where']):
+        return 'groq_llama3_8b'
+    else:
+        return 'openai_gpt4'
+\`\`\`
+
+The system leverages LangChain's powerful abstractions for document processing, vector storage, and LLM integration, while adding custom logic for intelligent routing and cost optimization.
+
+---
+
+## 🎯 Use Cases & Applications
+
+This RAG system is particularly well-suited for:
+
+- **Document Q&A systems** with large PDF collections
+- **Research assistance** tools for academic and professional use
+- **Customer support** systems with knowledge base integration
+- **Content analysis** and summarization workflows
+- **Educational platforms** with interactive document exploration
+
+The cost-optimized approach makes it viable for long-term deployment and scaling to larger user bases.
+
+---
+
+## 🔗 Resources & Future Development
+
+The complete project is available on [GitHub](https://github.com/AndreaBContarini/RAG_pdf_AGENT) with comprehensive documentation, implementation guides, and practical examples. The modular architecture supports extensibility and adaptation to emerging requirements in the RAG domain.
+
+Planned enhancements include:
+- **Additional LLM provider integrations** for further cost optimization
+- **Advanced query complexity analysis** using machine learning
+- **Real-time performance monitoring** and analytics
+- **Multi-language support** for international deployments
+- **Enhanced security features** for enterprise environments
+
+This implementation serves as a robust foundation for building scalable, cost-effective RAG applications using cutting-edge AI technologies and modern software engineering practices.
+`;
+
   const researchProjects: ResearchProject[] = [
     {
       id: 1,
+      title: 'Cost-Optimized RAG Agent with Multi-Provider LLM Routing',
+      description: 'Sophisticated RAG system leveraging LangChain architecture with intelligent cost optimization through multi-provider LLM routing, achieving 60-80% cost savings while maintaining high-quality responses.',
+      technologies: ['Python', 'LangChain', 'OpenAI GPT-4', 'Groq Llama 3', 'Supabase', 'Vector DB', 'RAG'],
+      imageUrl: '/assets/copertina_RAG_Agent.png',
+      date: 'December 2024',
+      content: ragAgentArticleContent,
+      slug: 'cost-optimized-rag-agent'
+    },
+    {
+      id: 2,
       title: 'AI-Powered File Operations Agent',
       description: 'Intelligent autonomous agent for CRUD file operations with CLI interface and MCP integration. Implements ReAct architecture with GPT-4o and LLaMA 3 for natural language file management.',
       technologies: ['Python', 'GPT-4o', 'LLaMA 3', 'ReAct Pattern', 'MCP', 'CLI', 'Pydantic-AI'],
@@ -600,7 +718,7 @@ The simulation achieved high accuracy, validating both the numerical scheme and 
       slug: 'ai-file-operations-agent'
     },
     {
-      id: 2,
+      id: 3,
       title: 'Beyblade Detection & Tracking with Computer Vision',
       description: 'Real-time system to detect, track, and analyze spinning Beyblade tops including collision detection using deep learning and tracking algorithms.',
       technologies: ['Computer Vision', 'YOLOv8', 'OpenCV', 'Kalman Filter', 'Object Tracking'],
@@ -610,7 +728,7 @@ The simulation achieved high accuracy, validating both the numerical scheme and 
       slug: 'beyblade-detection-tracking'
     },
     {
-      id: 3,
+      id: 4,
       title: 'Lung CT Scan Segmentation with Deep Learning',
       description: 'Deep learning framework for automatic segmentation of lung tissues in CT scan slices, helping to distinguish between normal and pathological tissues in COVID-19 patients.',
       technologies: ['Deep Learning', 'Medical Imaging', 'PyTorch', 'U-Net', 'Image Segmentation'],
@@ -620,7 +738,7 @@ The simulation achieved high accuracy, validating both the numerical scheme and 
       slug: 'lung-ct-scan-segmentation'
     },
     {
-      id: 4,
+      id: 5,
       title: 'Machine Learning Applications in NMR Imaging',
       description: 'Developing ML models to analyze MRI scans of the heel bone for osteoporosis diagnosis, with a focus on dimensionality reduction and latent space clustering.',
       technologies: ['Machine Learning', 'MRI', 'PyTorch', 'Dimensionality Reduction', 'Medical Imaging'],
@@ -630,7 +748,7 @@ The simulation achieved high accuracy, validating both the numerical scheme and 
       slug: 'ml-nmr-imaging'
     },
     {
-      id: 5,
+      id: 6,
       title: 'Jet Flavor Tagging with Deep Neural Networks',
       description: 'Using Deep Neural Networks to classify the flavor of hadronic jets in high-energy physics, with focus on bottom-quark identification for LHC experiments.',
       technologies: ['Deep Learning', 'PyTorch', 'High Energy Physics', 'LSTM', 'Classification'],
@@ -640,7 +758,7 @@ The simulation achieved high accuracy, validating both the numerical scheme and 
       slug: 'jet-flavor-tagging'
     },
     {
-      id: 6,
+      id: 7,
       title: 'Simulating Lennard-Jones Systems with Molecular Dynamics',
       description: 'A C++ implementation of Molecular Dynamics simulations for thermodynamic analysis of particles interacting via the Lennard-Jones potential using Tuckerman algorithm.',
       technologies: ['C++', 'Molecular Dynamics', 'Physics Simulation', 'Thermodynamics', 'Scientific Computing'],
@@ -729,7 +847,7 @@ The simulation achieved high accuracy, validating both the numerical scheme and 
   const renderProject = (project: ResearchProject) => {
     // Funzione per renderizzare video embedded in modo sicuro
     const renderHtmlVideo = () => {
-      if (selectedProject?.id === 2) {  // Solo per l'articolo Beyblade
+      if (selectedProject?.id === 3) {  // Solo per l'articolo Beyblade
         return (
           <div className="relative pb-[56.25%] h-0 overflow-hidden max-w-full my-8">
             <iframe 
@@ -867,7 +985,7 @@ The simulation achieved high accuracy, validating both the numerical scheme and 
               </ReactMarkdown>
               
               {/* Video demo con ancoraggio */}
-              {selectedProject?.id === 2 && (
+              {selectedProject?.id === 3 && (
                 <div id="demo-video" className="my-8 pt-4 border-t border-gray-300 dark:border-gray-700">
                   <h3 className={`text-2xl font-bold mb-4 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>
                     🎬 Demo Video: Beyblade Detection & Tracking
