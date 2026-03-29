@@ -7,6 +7,7 @@ import ResearchProjects from './pages/ResearchProjects';
 import AutomationProjects from './pages/AutomationProjects';
 import CV from './pages/CV';
 import Portfolio from './pages/Portfolio';
+import SearchPage from './pages/SearchPage';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
@@ -79,7 +80,7 @@ function App() {
                         Andrea Belli Contarini
                       </h2>
                       <p className={`text-sm mb-3 ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-                        Physicist & AI Solutions Architect<br />University of Geneva
+                        Physicist | Sapienza Università di Roma
                       </p>
                       <div className="flex flex-col items-start space-y-2 mt-2">
                         <a 
@@ -124,7 +125,7 @@ function App() {
                             🔬 My research interests lie in <strong>Computer Vision, Machine Learning and AI-driven automations</strong>. My latest projects include Visual Tracking in Spinning Top Simulations and Machine Learning applications in Medical Imaging.
                           </p>
                           <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
-                            🛠️ I'm the <strong>Co-Founder of <a href="https://www.martes-ai.com" target="_blank" rel="noopener noreferrer" className={`${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'} transition-colors`}>Martes AI</a></strong>, an AI Automation Agency, where we develop AI-powered solutions for business processes. I have experience with automation platforms such as Make, n8n, and Voiceflow.
+                            🛠️ I'm the <strong>Co-Founder and CTO @ <a href="https://www.martes-ai.com" target="_blank" rel="noopener noreferrer" className={`${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'} transition-colors`}>Martes AI</a></strong>, an Italian tech company, where we develop AI-powered software solutions for business processes.
                           </p>
                           <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-700'}`}>
                             📊 Previously, I worked as a Data Analyst intern at <a href="https://www.sas.com" target="_blank" rel="noopener noreferrer" className={`${isDarkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'} transition-colors`}>SAS</a>, focusing on Customer Intelligence and CRM analytics.
@@ -196,6 +197,7 @@ function App() {
         <Route path="/automation-projects/:articleSlug" element={<AutomationProjects />} />
         <Route path="/cv" element={<CV />} />
         <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/search" element={<SearchPage />} />
         {/* Fall back route for 404 pages */}
         <Route path="*" element={
           <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">

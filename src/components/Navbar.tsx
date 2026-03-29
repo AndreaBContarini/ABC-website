@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Menu, X, Moon, Sun } from 'lucide-react';
+import { Menu, X, Moon, Sun, Search } from 'lucide-react';
 
 interface NavbarProps {
   isDarkMode: boolean;
@@ -21,7 +21,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <button 
+            <button
               onClick={handleHomeClick}
               className={`text-xl font-semibold ${isDarkMode ? 'text-white' : 'text-gray-900'} hover:opacity-80 transition-opacity`}
             >
@@ -39,6 +39,16 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
             >
               CV
             </Link>
+            <a
+              href="https://www.martes-ai.com/blog"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`px-3 py-2 rounded-md text-sm font-medium ${
+                isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+              }`}
+            >
+              Blog
+            </a>
             <Link
               to="/portfolio"
               className={`px-3 py-2 rounded-md text-sm font-medium ${
@@ -46,6 +56,15 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
               }`}
             >
               Portfolio
+            </Link>
+            <Link
+              to="/search"
+              aria-label="Search"
+              className={`p-2 rounded-md ${
+                isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+              }`}
+            >
+              <Search className="h-5 w-5" />
             </Link>
             <button
               onClick={toggleDarkMode}
@@ -58,7 +77,16 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden flex items-center space-x-1">
+            <Link
+              to="/search"
+              aria-label="Search"
+              className={`p-2 rounded-md ${
+                isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+              }`}
+            >
+              <Search className="h-5 w-5" />
+            </Link>
             <button
               onClick={toggleDarkMode}
               className={`p-2 rounded-md ${
@@ -91,6 +119,16 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
             >
               CV
             </Link>
+            <a
+              href="https://www.martes-ai.com/blog"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`block px-3 py-2 rounded-md text-base font-medium ${
+                isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+              }`}
+            >
+              Blog
+            </a>
             <Link
               to="/portfolio"
               className={`block px-3 py-2 rounded-md text-base font-medium ${
@@ -98,6 +136,14 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleDarkMode }) => {
               }`}
             >
               Portfolio
+            </Link>
+            <Link
+              to="/search"
+              className={`block px-3 py-2 rounded-md text-base font-medium ${
+                isDarkMode ? 'text-gray-300 hover:text-white' : 'text-gray-700 hover:text-gray-900'
+              }`}
+            >
+              Search
             </Link>
           </div>
         </div>

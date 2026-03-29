@@ -280,6 +280,142 @@ This solution serves as a **replicable model** for any organization aiming to tr
 Visit us: [www.martes-ai.com](https://www.martes-ai.com)
 `;
 
+  const kerberosArticle = `# Kerby: the AI Agent Managing 800 Quotes per Year for Kerberos Energy
+
+## Introduction
+
+Kerberos Energy is an Italian energy company that handles a high volume of quote requests from business clients every day. Managing these requests manually — reading each email, extracting the relevant data, and crafting a personalized response — was consuming hours of work and slowing down the sales pipeline.
+
+Martes AI developed **Kerby**, an intelligent email agent that fully automates the quote management process, enabling Kerberos Energy to handle over **800 quotes per year** without human intervention on routine requests.
+
+---
+
+## The Challenge
+
+The Kerberos Energy team faced a recurring bottleneck:
+
+- **High volume of inbound quote requests** arriving via email daily
+- **Repetitive manual work**: reading requests, classifying them, extracting data, and sending responses
+- **Slow response times** that risked losing potential clients to faster competitors
+- **Inconsistent reply quality** depending on workload and operator availability
+
+The company needed a solution that could operate 24/7, respond instantly, and integrate seamlessly with their existing workflow.
+
+---
+
+## The Solution: Kerby
+
+Martes AI designed and deployed **Kerby**, an AI-powered email agent built on a custom automation pipeline. Here's how it works:
+
+1. **Email Monitoring**: Kerby continuously monitors the company inbox for new quote requests
+2. **Intent Classification**: Each incoming email is analyzed to detect whether it's a quote request, a follow-up, a complaint, or general inquiry
+3. **Data Extraction**: For quote requests, Kerby extracts the key parameters (energy consumption, contract type, business size) using an LLM
+4. **Automated Response**: Kerby generates a personalized quote or preliminary response and sends it directly, or routes complex cases to a human operator
+5. **CRM Logging**: All interactions are automatically logged for tracking and follow-up
+
+---
+
+## Results
+
+| Metric | Before Kerby | After Kerby |
+|--------|-------------|-------------|
+| Quotes processed/year | ~300 (manual) | **800+** |
+| Average response time | 4–8 hours | **< 5 minutes** |
+| Operator time on routine quotes | ~3 hours/day | **< 30 minutes/day** |
+| Quote consistency | Variable | **Standardized** |
+
+---
+
+## Technologies Used
+
+- **n8n** — workflow orchestration and email pipeline
+- **OpenAI GPT-4o** — intent classification and response generation
+- **Custom CRM integration** — automatic data logging
+- **SMTP / IMAP** — email monitoring and sending
+
+---
+
+## Conclusions
+
+Kerby demonstrates how AI automation can transform a high-volume, repetitive process into a competitive advantage. Kerberos Energy now responds to quote requests faster than any competitor, freeing their team to focus on closing deals rather than processing emails.
+
+> "Kerby changed how we work. What used to take our team hours now happens automatically in minutes." — Kerberos Energy team
+
+Visit us: [www.martes-ai.com](https://www.martes-ai.com)
+`;
+
+  const buildupArticle = `# From Paper to WhatsApp: Field Reporting with Prisma Agent for BuildUp FM
+
+## Introduction
+
+BuildUp FM is an Italian facilities management company whose field technicians spend their days on-site — inspecting equipment, completing maintenance tasks, and tracking their work hours. For years, this data was captured on paper forms, then manually transferred to spreadsheets at the end of each day.
+
+Martes AI integrated **Prisma Agent** — Martes AI's intelligent reporting platform — with WhatsApp, creating a frictionless reporting workflow that eliminated paper entirely and gave management real-time visibility into field operations.
+
+---
+
+## The Challenge
+
+BuildUp FM's reporting process had several pain points:
+
+- **Paper-based timesheets** that technicians filled in at the end of each shift
+- **Manual data entry** by back-office staff every evening to transfer paper records to spreadsheets
+- **Errors and omissions** caused by illegible handwriting or forgotten details
+- **Zero real-time visibility** for project managers who needed up-to-date hour tracking
+- **Compliance risk** from incomplete or delayed reporting
+
+The company needed a reporting system that was simple enough for field technicians (who are not office workers) and powerful enough to give management instant, accurate data.
+
+---
+
+## The Solution: Prisma Agent on WhatsApp
+
+Martes AI deployed **Prisma Agent** — a conversational AI system integrated directly into WhatsApp Business — as the reporting interface for BuildUp FM's field teams.
+
+### How it works:
+
+1. **End of task**: The technician opens WhatsApp and sends a simple message to the Prisma Agent chat (e.g., "Finito intervento caldaia via Roma 14, 3 ore")
+2. **Structured extraction**: Prisma Agent parses the message, extracting: technician ID, location, task type, hours worked, and any anomalies
+3. **Validation & confirmation**: The agent replies with a structured summary for the technician to confirm, reducing errors
+4. **Automatic logging**: Confirmed entries are immediately written to the management dashboard and accounting system
+5. **Daily summary**: At end of day, managers receive an automatic WhatsApp summary of all field activity
+
+---
+
+## Results
+
+| Metric | Before | After Prisma Agent |
+|--------|--------|--------------------|
+| Reporting method | Paper forms | WhatsApp messages |
+| Data entry lag | 12–24 hours | **Real-time** |
+| Back-office data entry time | ~2 hours/day | **0** |
+| Reporting errors | ~15% of entries | **< 2%** |
+| Technician adoption time | — | **< 1 day** |
+
+---
+
+## Why WhatsApp?
+
+Field technicians already use WhatsApp every day. By meeting them on a platform they know and trust, BuildUp FM achieved **near-instant adoption** with zero training required. There was no new app to install, no new interface to learn.
+
+---
+
+## Technologies Used
+
+- **Prisma Agent** (Martes AI) — conversational AI for structured data collection
+- **WhatsApp Business API** — the reporting interface
+- **n8n** — workflow automation and system integration
+- **Google Sheets / custom dashboard** — real-time data visualization
+
+---
+
+## Conclusions
+
+The BuildUp FM project shows that the best digital transformation is often the most invisible one. Field workers didn't change their habits — they just replaced a paper form with a WhatsApp message. The result was a fully digital, real-time reporting system with zero friction and zero training.
+
+Visit us: [www.martes-ai.com](https://www.martes-ai.com)
+`;
+
   // Sample articles list
   const articles = [
     {
@@ -311,6 +447,26 @@ Visit us: [www.martes-ai.com](https://www.martes-ai.com)
       content: newsletterArticle,
       technologies: ['Content Automation', 'Make Integration', 'PubMed API', 'Mailchimp', 'AI Images'],
       slug: 'scientific-newsletter-agent'
+    },
+    {
+      id: 4,
+      title: 'Kerby: AI Email Agent for Kerberos Energy',
+      summary: 'How Martes AI built an intelligent email agent that autonomously manages over 800 quote requests per year for an Italian energy company.',
+      date: 'February 20, 2026',
+      thumbnail: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+      content: kerberosArticle,
+      technologies: ['n8n', 'OpenAI GPT-4o', 'Email Automation', 'CRM Integration', 'AI Agent'],
+      slug: 'kerby-email-agent-kerberos-energy'
+    },
+    {
+      id: 5,
+      title: 'From Paper to WhatsApp: Reporting for BuildUp FM',
+      summary: 'How Martes AI replaced paper-based field reporting with a WhatsApp AI agent using Prisma, giving BuildUp FM real-time operational visibility.',
+      date: 'March 10, 2026',
+      thumbnail: 'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=80',
+      content: buildupArticle,
+      technologies: ['WhatsApp Business API', 'Prisma Agent', 'n8n', 'Workflow Automation', 'Field Tech'],
+      slug: 'whatsapp-reporting-buildup-fm'
     }
   ];
 
